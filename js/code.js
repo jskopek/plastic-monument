@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
-import {Monument, scaleGroupChildren} from './monument.js';
+import {Monument, ScaleGroupChildren} from './monument.js';
 
 
 // initialize renderer
@@ -48,8 +48,9 @@ let monumentGroup = monument.generateGroup()
 monumentGroup.position.set(0,-50,0);
 scene.add(monumentGroup);
 
-//let initVals = {renderer, controls, monument, scene, camera, monumentGroup}
-let scale = scaleGroupChildren(monumentGroup, 100, 2);
+// run scaler
+let scale = new ScaleGroupChildren(monumentGroup);
+scale.animate(1);
 
 // looping animation method
 function animate() {
@@ -58,9 +59,9 @@ function animate() {
     renderer.render( scene, camera );
     controls.update()
 
-    if(scale) {
-        scale();
-    }
+    //if(scaleFn) {
+        //scaleFn();
+    //}
 }
 animate();
 
