@@ -25,12 +25,13 @@ function init() {
 
     camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 1100 );
     //camera.target = new THREE.Vector3( 0, 0, 0 );
-    camera.position.x = -2;
-    camera.position.y = 0;
-    camera.position.z = 1;
+    camera.position.x = -50;
+    camera.position.y = -47;
+    camera.position.z = -50;
+    camera.lookAt(0,-50,0);
 
-    controls = new OrbitControls(camera);
-    controls.autoRotate = true;
+//    controls = new OrbitControls(camera);
+//    controls.autoRotate = true;
 
     scene = new THREE.Scene();
 
@@ -43,6 +44,11 @@ function init() {
     scene.add( mesh );
 
     monument = new Monument(scene, 10);
+    monument.group.position.set(0,-50,0);
+    scene.add(monument.group);
+
+    //monument.expand(10);
+
     window.monument = monument;
 
     // set up floor
@@ -56,6 +62,6 @@ function init() {
 function animate() {
     requestAnimationFrame( animate );
     renderer.render( scene, camera );
-    controls.update()
+    //controls.update()
     monument.update();
 }
