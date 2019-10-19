@@ -1,67 +1,66 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
-import Monument from './monument.js';
-
-var camera, scene, renderer, controls;
-var lon = 0, lat = 0, phi = 0, theta = 0;
+import {Monument, scaleGroupChildren} from './monument.js';
 
 
-init();
-animate();
-
-
-var monument
-function init() {
-
-    var container, mesh;
-
-    container = document.getElementById( 'container' );
-
-    renderer = new THREE.WebGLRenderer();
+function init(containerEl) {
+    let renderer = new THREE.WebGLRenderer();
     renderer.setPixelRatio( window.devicePixelRatio );
     renderer.setSize( window.innerWidth, window.innerHeight );
-    container.appendChild( renderer.domElement );
+    containerEl.appendChild( renderer.domElement );
 
-
-    camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 1100 );
+    var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 1100 );
     //camera.target = new THREE.Vector3( 0, 0, 0 );
     camera.position.x = -50;
     camera.position.y = -47;
     camera.position.z = -50;
     camera.lookAt(0,-50,0);
 
-//    controls = new OrbitControls(camera);
-//    controls.autoRotate = true;
+    let controls = new OrbitControls(camera);
+    controls.autoRotate = true;
 
-    scene = new THREE.Scene();
+    let scene = new THREE.Scene();
 
-    // loading background sphere
-    var geometry = new THREE.SphereGeometry( 100, 60, 40 );
+    // create background sphere
+    let geometry = new THREE.SphereGeometry( 100, 60, 40 );
     geometry.scale( - 1, 1, 1 );
-    var texture = new THREE.TextureLoader().load( 'img/one.jpg' )
-    var material = new THREE.MeshBasicMaterial({map: texture});
-    mesh = new THREE.Mesh( geometry, material );
+    let texture = new THREE.TextureLoader().load( 'img/four.jpg' )
+    let material = new THREE.MeshBasicMaterial({map: texture});
+    let mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh );
 
-    monument = new Monument(scene, 10);
-    monument.group.position.set(0,-50,0);
-    scene.add(monument.group);
-
-    //monument.expand(10);
-
-    window.monument = monument;
-
-    // set up floor
-    var floorGeometry = new THREE.BoxGeometry(200,1,200);
-    var floorMaterial = new THREE.MeshBasicMaterial({color:0x000000})
-    var floorCube = new THREE.Mesh(floorGeometry, floorMaterial);
+    // create floor
+    let floorGeometry = new THREE.BoxGeometry(200,1,200);
+    let floorMaterial = new THREE.MeshBasicMaterial({color:0x000000})
+    let floorCube = new THREE.Mesh(floorGeometry, floorMaterial);
     floorCube.position.set(0,-50,0);
     scene.add(floorCube);
+
+    // generate a monument
+    let monument = new Monument(10);
+    let monumentGroup = monument.generateGroup()
+    monumentGroup.position.set(0,-50,0);
+    scene.add(monumentGroup);
+
+    return {renderer, controls, monument, scene, camera, monumentGroup}
 }
 
-function animate() {
-    requestAnimationFrame( animate );
-    renderer.render( scene, camera );
-    //controls.update()
-    monument.update();
+function animate(initVals) {
+    requestAnimationFrame(() => { animate(initVals); });
+
+    initVals.renderer.render( initVals.scene, initVals.camera );
+    initVals.controls.update()
+    initVals.monument.update();
+
+    if(initVals.scale) {
+        initVals.scale();
+    }
 }
+
+let initVals = init(document.getElementById( 'container' ));
+initVals.scale = scaleGroupChildren(initVals.monumentGroup, 100, 2);
+animate(initVals);
+
+
+window.initVals = initVals
+window.scaleGroupChildren = scaleGroupChildren
