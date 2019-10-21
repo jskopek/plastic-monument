@@ -102,6 +102,10 @@ function testCamera(index) {
     if(index >= monumentGroup.children.length) { return }
 
     panCam(index, 1000);
+
+    monument.pillars[index].disable()
+
+
     setTimeout(() => {
         testCamera(index + 1)
     }, 1000);

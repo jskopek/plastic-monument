@@ -53,6 +53,11 @@ class Pillar {
         var box = new THREE.Mesh( geometry, material );
         return box
     }
+    disable() {
+        var gray = new THREE.Color('gray')
+        this.humanCube.material.color = gray
+        this.plasticCube.material.color = gray
+    }
 }
 class Monument {
     /*
