@@ -55,7 +55,7 @@ floorCube.position.set(0,-50,0);
 scene.add(floorCube);
 
 // generate a monument
-let monument = new Monument(10);
+let monument = new Monument(50);
 let monumentGroup = monument.generateGroup()
 monumentGroup.position.set(0,-50,0);
 scene.add(monumentGroup);
@@ -66,43 +66,44 @@ let scale = new ScaleGroupChildren(monumentGroup);
 
 
 /// ---- TESTING ANIMATED CAMERA
-//var from = {
-//    x : camera.position.x,
-//    y : camera.position.y,
-//    z : camera.position.z
-//};
-//
-//var to = {
-//    x : -50,
-//    y : -47,
-//    z : 50
-//};
-//var tween = new TWEEN.Tween(from)
-//    .to(to,600)
-//    .easing(TWEEN.Easing.Linear.None)
-//    .onUpdate(function () {
-//        console.log('tween.onUpdate', this.x, this.y, this.z)
-//        camera.position.set(this.x, this.y, this.z);
-//        camera.lookAt(lookAt);
-//    })
-//    .onComplete(function () {
-//        camera.lookAt(lookAt);
-//    })
-//    .start();
-//
-
-
 function panCam(xTarget,yTarget,zTarget,tweenDuration){
 
     TWEEN.removeAll();
 
-    var camNewPosition= { x : xTarget, y : yTarget, z : zTarget};
+    //var camNewPosition= { x : xTarget, y : yTarget, z : zTarget};
+    //camNewPosition = {x: camNewPosition.x, y: camNewPosition.y, z: camNewPosition.z}
+    //var camNewPosition= new THREE.Vector3(xTarget,yTarget,zTarget).addScalar(10)
     var targetNewPos = {x : xTarget, y : yTarget, z : zTarget};
+
+
+    //var tst = new THREE.Vector3(xTarget,yTarget,zTarget)
+    //tst.sub(controls.target);
+    //console.log('tst', tst)
+
+    //camNewPosition = camera.position.clone().add(tst)
+    //camNewPosition = {x: camNewPosition.x, y: camNewPosition.y, z: camNewPosition.z}
+    //console.log('camNewPosition', camera.position, tst, camNewPosition)
 
     //var camTween = new TWEEN.Tween(camera.position).to(camNewPosition, tweenDuration).easing(TWEEN.Easing.Quadratic.InOut).start();
     var targetTween = new TWEEN.Tween(controls.target).to(targetNewPos, tweenDuration).easing(TWEEN.Easing.Quadratic.InOut).start();
+    
 }
-panCam(10,-47,2, 1000);
+
+//panCam(10,-47,2, 1000);
+function testCamera(index) {
+    console.log('testCamera', index);
+    if(index >= monumentGroup.children.length) { return }
+    let panelPosition = monument.getPosition(monumentGroup, index)
+    panCam(panelPosition.x, panelPosition.y, panelPosition.z, 1000);
+    setTimeout(() => {
+        testCamera(index + 1)
+    }, 1000);
+}
+testCamera(0)
+
+//setTimeout(() => {
+//    panCam(-20,-37,23, 1000);
+//}, 5000);
 /// ---- END TESTING ANIMATED CAMERA
 
 // looping animation method
@@ -117,4 +118,4 @@ animate();
 
 
 // DEBUG VALUES
-window.debug = {renderer, monument, scene, camera, monumentGroup, scale}
+window.debug = {renderer, monument, scene, camera, monumentGroup, scale, THREE}

@@ -77,6 +77,11 @@ class Monument {
         });
         return group
     }
+    getPosition(monumentGroup, index) {
+        let position = new THREE.Vector3()
+        position.add(monumentGroup.position).add(monumentGroup.children[index].position)
+        return position
+    }
 }
 
 class ScaleGroupChildren {
