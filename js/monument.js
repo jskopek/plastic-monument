@@ -20,7 +20,6 @@ class Pillar {
         var plasticHeight = this.plasticMass * heightPerUnit
         var humanHeight = this.humanMass * heightPerUnit
         var height = humanHeight + plasticHeight
-        console.log({plasticHeight, humanHeight, height});
 
         var humanCube = this.generateBox(size, humanHeight, 0x00ff00)
         group.add(humanCube);
