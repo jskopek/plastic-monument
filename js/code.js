@@ -56,8 +56,8 @@ scene.add(floorCube);
 
 // generate a monument
 let monument = new Monument(50);
-let monumentGroup = monument.generateGroup()
 monumentGroup.position.set(0,-50,0);
+let monumentGroup = monument.render()
 scene.add(monumentGroup);
 
 // run scaler

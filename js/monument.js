@@ -8,24 +8,31 @@ class Pillar {
         this.humanMass = humanMass
         this.plasticMass = plasticMass
         this.year = year
+
+        this.group = undefined
+        this.humanCube = undefined
+        this.plasticCube = undefined
     }
-    generateGroup(size, heightPerUnit) {
+    render(size, heightPerUnit) {
         /*
          * returns a THREE.Group containing a human cube and plastic cube; visualizes the pillar
          * size: width & depth of each box
          * heightPerUnit: height of each unit of humanMass and plasticMass
          */
         let group = new THREE.Group()
+        this.group = group
 
         var plasticHeight = this.plasticMass * heightPerUnit
         var humanHeight = this.humanMass * heightPerUnit
         var height = humanHeight + plasticHeight
 
         var humanCube = this.generateBox(size, humanHeight, 0x00ff00)
+        this.humanCube = humanCube
         group.add(humanCube);
         humanCube.position.set(0, humanHeight/2, 0);
 
         var plasticCube = this.generateBox(size, plasticHeight)
+        this.plasticCube = plasticCube
         group.add(plasticCube)
         plasticCube.position.set(0, humanHeight + 0.1 +  plasticHeight/2, 0);
 
@@ -48,6 +55,8 @@ class Monument {
      */
     constructor(numPillars) {
         this.pillars = []
+        this.group = undefined
+
         let startingYear = 1950
         for(var index = 0; index < numPillars; index++) {
             let humanMass = (index + 1 /3)
@@ -62,20 +71,21 @@ class Monument {
         var pillar = new Pillar(humanMass, plasticMass, year);
         this.pillars.push(pillar)
     }
-    generateGroup(size=1, heightPerUnit=1) {
+    render(size=1, heightPerUnit=1) {
         /*
          * returns a THREE.Group containing a each pillar in the monumnet, lined one after the other
          * size: width & depth of each pillar
          * heightPerUnit: height of each unit of humanMass and plasticMass in pillar
          */
-        let group = new THREE.Group();
+        this.group = new THREE.Group();
         this.pillars.forEach((pillar, index) => {
-            let pillarGroup = pillar.generateGroup(size, heightPerUnit)
+            let pillarGroup = pillar.render(size, heightPerUnit)
             //pillarGroup = pillar.generateBox(size, 10)
             pillarGroup.position.set(size * 1.5  * index, 0, 0)
-            group.add(pillarGroup)
+            this.group.add(pillarGroup)
         });
-        return group
+        return this.group
+    }
     }
     getPosition(monumentGroup, index) {
         let position = new THREE.Vector3()
