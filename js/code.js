@@ -51,13 +51,13 @@ scene.add( mesh );
 let floorGeometry = new THREE.BoxGeometry(200,1,200);
 let floorMaterial = new THREE.MeshBasicMaterial({color:0x000000})
 let floorCube = new THREE.Mesh(floorGeometry, floorMaterial);
-floorCube.position.set(0,-50,0);
+floorCube.position.set(0,-2,0);
 scene.add(floorCube);
 
 // generate a monument
 let monument = new Monument(50);
-monumentGroup.position.set(0,-50,0);
 let monumentGroup = monument.render()
+monumentGroup.position.set(0,0,10);
 scene.add(monumentGroup);
 
 // run scaler
