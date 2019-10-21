@@ -28,7 +28,7 @@ camera.lookAt(lookAt)
 
 //// initialize orbital rotation
 let controls = new OrbitControls(camera);
-controls.autoRotate = true;
+controls.autoRotate = false;
 //controls.enableZoom = false;
 //camera.zoom = 20;
 controls.rotateSpeed = 2.0
@@ -66,14 +66,13 @@ let scale = new ScaleGroupChildren(monumentGroup);
 
 
 /// ---- TESTING ANIMATED CAMERA
-function panCam(xTarget,yTarget,zTarget,tweenDuration){
+function panCam(index,tweenDuration){
 
     TWEEN.removeAll();
 
     //var camNewPosition= { x : xTarget, y : yTarget, z : zTarget};
     //camNewPosition = {x: camNewPosition.x, y: camNewPosition.y, z: camNewPosition.z}
     //var camNewPosition= new THREE.Vector3(xTarget,yTarget,zTarget).addScalar(10)
-    var targetNewPos = {x : xTarget, y : yTarget, z : zTarget};
 
 
     //var tst = new THREE.Vector3(xTarget,yTarget,zTarget)
@@ -85,16 +84,24 @@ function panCam(xTarget,yTarget,zTarget,tweenDuration){
     //console.log('camNewPosition', camera.position, tst, camNewPosition)
 
     //var camTween = new TWEEN.Tween(camera.position).to(camNewPosition, tweenDuration).easing(TWEEN.Easing.Quadratic.InOut).start();
+
+    let targetNewPos = monument.getPosition(index)
+    targetNewPos = {x : targetNewPos.x, y : targetNewPos.y, z : targetNewPos.z};
     var targetTween = new TWEEN.Tween(controls.target).to(targetNewPos, tweenDuration).easing(TWEEN.Easing.Quadratic.InOut).start();
-    
+
+    let targetNewCamPos = monument.getCameraPosition(index)
+    targetNewCamPos = {x : targetNewCamPos.x, y : targetNewCamPos.y, z : targetNewCamPos.z};
+    var targetTween = new TWEEN.Tween(camera.position).to(targetNewCamPos, tweenDuration).easing(TWEEN.Easing.Quadratic.InOut).start();
+
 }
 
 //panCam(10,-47,2, 1000);
 function testCamera(index) {
     console.log('testCamera', index);
+
     if(index >= monumentGroup.children.length) { return }
-    let panelPosition = monument.getPosition(monumentGroup, index)
-    panCam(panelPosition.x, panelPosition.y, panelPosition.z, 1000);
+
+    panCam(index, 1000);
     setTimeout(() => {
         testCamera(index + 1)
     }, 1000);

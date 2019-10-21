@@ -38,6 +38,11 @@ class Pillar {
 
         return group
     }
+    height(heightPerUnit=1) {
+        var plasticHeight = this.plasticMass * heightPerUnit
+        var humanHeight = this.humanMass * heightPerUnit
+        var height = humanHeight + plasticHeight
+    }
     generateBox(size, height, color) {
         /*
          * return: a box of size and height and color
@@ -86,10 +91,20 @@ class Monument {
         });
         return this.group
     }
+    getPosition(index) {
+        let position = this.group.children[index].position.clone()
+        position.add(this.group.position)
+        return position
     }
-    getPosition(monumentGroup, index) {
-        let position = new THREE.Vector3()
-        position.add(monumentGroup.position).add(monumentGroup.children[index].position)
+    getCameraTargetPosition(index) {
+        var position = this.getPosition(index)
+        position.y -= this.pillars[index].height()
+        return position
+    }
+    getCameraPosition(index) {
+        var position = this.getPosition(index)
+        position.multiplyScalar(2)
+        console.log('getCameraPosition', this.getPosition(index), position)
         return position
     }
 }
