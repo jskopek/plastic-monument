@@ -40,9 +40,9 @@ controls.enableZoom = true
 let scene = new THREE.Scene();
 
 // create background sphere
-let geometry = new THREE.SphereGeometry( 100, 60, 40 );
+let geometry = new THREE.SphereGeometry( 1000, 60, 40 );
 geometry.scale( - 1, 1, 1 );
-let texture = new THREE.TextureLoader().load( 'img/four.jpg' )
+let texture = new THREE.TextureLoader().load( 'img/one.jpg' )
 let material = new THREE.MeshBasicMaterial({map: texture});
 let mesh = new THREE.Mesh( geometry, material );
 scene.add( mesh );
@@ -55,7 +55,7 @@ floorCube.position.set(0,-2,0);
 scene.add(floorCube);
 
 // generate a monument
-let monument = new Monument(50);
+let monument = new Monument(150);
 let monumentGroup = monument.render()
 monumentGroup.position.set(0,0,10);
 scene.add(monumentGroup);
@@ -85,13 +85,15 @@ function panCam(index,tweenDuration){
 
     //var camTween = new TWEEN.Tween(camera.position).to(camNewPosition, tweenDuration).easing(TWEEN.Easing.Quadratic.InOut).start();
 
-    let targetNewPos = monument.getPosition(index)
+    let targetNewPos = monument.getCameraTargetPosition(index)
     targetNewPos = {x : targetNewPos.x, y : targetNewPos.y, z : targetNewPos.z};
     var targetTween = new TWEEN.Tween(controls.target).to(targetNewPos, tweenDuration).easing(TWEEN.Easing.Quadratic.InOut).start();
 
     let targetNewCamPos = monument.getCameraPosition(index)
     targetNewCamPos = {x : targetNewCamPos.x, y : targetNewCamPos.y, z : targetNewCamPos.z};
     var targetTween = new TWEEN.Tween(camera.position).to(targetNewCamPos, tweenDuration).easing(TWEEN.Easing.Quadratic.InOut).start();
+
+    console.log('panCam', targetNewPos);
 
 }
 
@@ -103,11 +105,12 @@ function testCamera(index) {
 
     panCam(index, 1000);
 
-    monument.pillars[index].disable()
-
+    monument.pillars.forEach((pillar) => { pillar.disable(); })
+    monument.pillars[index].enable()
 
     setTimeout(() => {
-        testCamera(index + 1)
+        //testCamera(index + 1)
+        testCamera(parseInt(Math.random() * monument.pillars.length))
     }, 1000);
 }
 testCamera(0)

@@ -42,6 +42,7 @@ class Pillar {
         var plasticHeight = this.plasticMass * heightPerUnit
         var humanHeight = this.humanMass * heightPerUnit
         var height = humanHeight + plasticHeight
+        return height
     }
     generateBox(size, height, color) {
         /*
@@ -51,12 +52,16 @@ class Pillar {
         var material = new THREE.MeshBasicMaterial( { color: color || 0x0000ff } );
         var geometry = new THREE.BoxGeometry( size, height, size );
         var box = new THREE.Mesh( geometry, material );
+        window.box = box
         return box
     }
     disable() {
-        var gray = new THREE.Color('gray')
-        this.humanCube.material.color = gray
-        this.plasticCube.material.color = gray
+        this.humanCube.material.color = new THREE.Color('darkgray')
+        this.plasticCube.material.color = new THREE.Color('lightgray')
+    }
+    enable() {
+        this.humanCube.material.color = new THREE.Color('green')
+        this.plasticCube.material.color = new THREE.Color('blue')
     }
 }
 class Monument {
@@ -103,13 +108,15 @@ class Monument {
     }
     getCameraTargetPosition(index) {
         var position = this.getPosition(index)
-        position.y -= this.pillars[index].height()
+        position.y += this.pillars[index].height()
         return position
     }
     getCameraPosition(index) {
         var position = this.getPosition(index)
-        position.multiplyScalar(2)
-        console.log('getCameraPosition', this.getPosition(index), position)
+        position.x = position.x * .8
+        //position.z += parseInt(this.pillars[index].height() * 1) + 10
+        position.z += 30
+        //position.multiplyScalar(2)
         return position
     }
 }
