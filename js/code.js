@@ -2,6 +2,8 @@ import * as THREE from 'three';
 import TWEEN from 'tween';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import {Monument, ScaleGroupChildren} from './monument.js';
+const pillarData = require('../data.csv')
+require('../css/main.scss')
 
 
 // initialize renderer
@@ -29,12 +31,12 @@ camera.lookAt(lookAt)
 //// initialize orbital rotation
 let controls = new OrbitControls(camera);
 controls.autoRotate = false;
-//controls.enableZoom = false;
+controls.enableZoom = false;
 //camera.zoom = 20;
 controls.rotateSpeed = 2.0
 controls.zoomSpeed = 5
 controls.panSpeed = 2
-controls.enableZoom = true
+//controls.enableZoom = true
 
 // initialize scene
 let scene = new THREE.Scene();
@@ -52,10 +54,14 @@ let floorGeometry = new THREE.BoxGeometry(200,1,200);
 let floorMaterial = new THREE.MeshBasicMaterial({color:0x000000})
 let floorCube = new THREE.Mesh(floorGeometry, floorMaterial);
 floorCube.position.set(0,-2,0);
-scene.add(floorCube);
+//scene.add(floorCube);
 
 // generate a monument
-let monument = new Monument(150);
+let monument = new Monument(0);
+pillarData.forEach((pillarRow) => {
+    monument.addPillar(pillarRow.humanMass / 1000, pillarRow.plasticMass / 1000, pillarRow.year, pillarRow.notes)
+});
+
 let monumentGroup = monument.render()
 monumentGroup.position.set(0,0,10);
 scene.add(monumentGroup);
@@ -63,6 +69,40 @@ scene.add(monumentGroup);
 // run scaler
 let scale = new ScaleGroupChildren(monumentGroup);
 //scale.animate(1);
+
+
+// generate text content
+let textEl = document.querySelector('#text')
+monument.pillars.forEach((pillar, index) => {
+    var pillarTextEl = document.createElement('div')
+    pillarTextEl.innerHTML = pillar.renderText();
+
+    let observer = new IntersectionObserver((entries) => {
+        if(entries[0].boundingClientRect.y < 0) {
+            console.log('past something', pillar.year, index);
+
+
+            panCam(index, 2000);
+            monument.pillars.forEach((pillar) => { pillar.disable(); })
+            monument.pillars[index].enable()
+        }
+    })
+    observer.observe(pillarTextEl);
+    
+    textEl.appendChild(pillarTextEl);
+});
+
+
+// observe camera-cirlce
+document.querySelectorAll('.camera-circle').forEach((el) => {
+    let cameraCircleObserver = new IntersectionObserver((el) => {
+        controls.autoRotate = true;
+        console.log('cameraCircleObserver');
+    })
+
+    cameraCircleObserver.observe(el);
+});
+ 
 
 
 /// ---- TESTING ANIMATED CAMERA
@@ -85,21 +125,23 @@ function panCam(index,tweenDuration){
 
     //var camTween = new TWEEN.Tween(camera.position).to(camNewPosition, tweenDuration).easing(TWEEN.Easing.Quadratic.InOut).start();
 
+
+    // stop autorotate camera - transitions back from rotating to panning mode
+    controls.autoRotate = false;
+
     let targetNewPos = monument.getCameraTargetPosition(index)
     targetNewPos = {x : targetNewPos.x, y : targetNewPos.y, z : targetNewPos.z};
-    var targetTween = new TWEEN.Tween(controls.target).to(targetNewPos, tweenDuration).easing(TWEEN.Easing.Quadratic.InOut).start();
+    var targetTween = new TWEEN.Tween(controls.target).to(targetNewPos, tweenDuration).easing(TWEEN.Easing.Back.Out).start();
 
     let targetNewCamPos = monument.getCameraPosition(index)
     targetNewCamPos = {x : targetNewCamPos.x, y : targetNewCamPos.y, z : targetNewCamPos.z};
-    var targetTween = new TWEEN.Tween(camera.position).to(targetNewCamPos, tweenDuration).easing(TWEEN.Easing.Quadratic.InOut).start();
+    var targetTween = new TWEEN.Tween(camera.position).to(targetNewCamPos, tweenDuration).easing(TWEEN.Easing.Quadratic.Out).start();
 
-    console.log('panCam', targetNewPos);
 
 }
 
 //panCam(10,-47,2, 1000);
 function testCamera(index) {
-    console.log('testCamera', index);
 
     if(index >= monumentGroup.children.length) { return }
 
@@ -109,11 +151,11 @@ function testCamera(index) {
     monument.pillars[index].enable()
 
     setTimeout(() => {
-        //testCamera(index + 1)
-        testCamera(parseInt(Math.random() * monument.pillars.length))
-    }, 1000);
+        testCamera(index + 1)
+        //testCamera(parseInt(Math.random() * monument.pillars.length))
+    }, 2000);
 }
-testCamera(0)
+//testCamera(0)
 
 //setTimeout(() => {
 //    panCam(-20,-37,23, 1000);

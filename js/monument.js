@@ -4,10 +4,11 @@ class Pillar {
     /*
      * Represents each pillar in the monumnet
      * */
-    constructor(humanMass, plasticMass, year) {
+    constructor(humanMass, plasticMass, year, notes) {
         this.humanMass = humanMass
         this.plasticMass = plasticMass
         this.year = year
+        this.notes = notes
 
         this.group = undefined
         this.humanCube = undefined
@@ -37,6 +38,13 @@ class Pillar {
         plasticCube.position.set(0, humanHeight + 0.1 +  plasticHeight/2, 0);
 
         return group
+    }
+    renderText() {
+        return `
+        <h2>${this.year}</h2>
+        <h4>Human Mass: ${this.humanMass}</h4>
+        <h4>Plastic Mass: ${this.plasticMass}</h4>
+        <p>${this.notes}</p>`
     }
     height(heightPerUnit=1) {
         var plasticHeight = this.plasticMass * heightPerUnit
@@ -72,6 +80,7 @@ class Monument {
         this.pillars = []
         this.group = undefined
 
+
         let startingYear = 1950
         for(var index = 0; index < numPillars; index++) {
             let humanMass = (index + 1 /3)
@@ -79,12 +88,13 @@ class Monument {
             this.addPillar(humanMass, plasticMass, startingYear + index)
         }
     }
-    addPillar(humanMass, plasticMass, year) {
+    addPillar(humanMass, plasticMass, year, notes) {
         /* creates a new pillar with `humanMass`, `plasticMass`, `year` and adds to the monument's array of pillars
          * return: none
          */
-        var pillar = new Pillar(humanMass, plasticMass, year);
+        var pillar = new Pillar(humanMass, plasticMass, year, notes);
         this.pillars.push(pillar)
+        return pillar
     }
     render(size=1, heightPerUnit=1) {
         /*

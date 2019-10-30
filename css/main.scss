@@ -1,0 +1,36 @@
+body { margin: 0; }
+canvas { width: 100%; height: 100% }
+
+/*
+#text {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    overflow-y: auto;
+
+    color: #fff;
+    background: radial-gradient(circle at 100%, #0000, #0000 50%, #000 75%, #000 75%);
+}
+*/
+
+#container {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+#text {
+    z-index: 1;
+}
+
+.camera-circle {
+    /* a huge area for the camera to circle around the monument */
+    /*height: 100vh;*/
+    margin: 200vh;
+    height: 100vh;
+}
