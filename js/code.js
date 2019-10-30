@@ -44,7 +44,7 @@ let scene = new THREE.Scene();
 // create background sphere
 let geometry = new THREE.SphereGeometry( 1000, 60, 40 );
 geometry.scale( - 1, 1, 1 );
-let texture = new THREE.TextureLoader().load( 'img/one.jpg' )
+let texture = new THREE.TextureLoader().load( 'img/four.jpg' )
 let material = new THREE.MeshBasicMaterial({map: texture});
 let mesh = new THREE.Mesh( geometry, material );
 scene.add( mesh );
@@ -59,7 +59,7 @@ floorCube.position.set(0,-2,0);
 // generate a monument
 let monument = new Monument(0);
 pillarData.forEach((pillarRow) => {
-    monument.addPillar(pillarRow.humanMass / 1000, pillarRow.plasticMass / 1000, pillarRow.year, pillarRow.notes)
+    monument.addPillar(pillarRow.humanMass, pillarRow.plasticMass, pillarRow.year, pillarRow.notes)
 });
 
 let monumentGroup = monument.render()

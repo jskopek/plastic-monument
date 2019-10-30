@@ -46,7 +46,7 @@ class Pillar {
         <h4>Plastic Mass: ${this.plasticMass}</h4>
         <p>${this.notes}</p>`
     }
-    height(heightPerUnit=1) {
+    height(heightPerUnit) {
         var plasticHeight = this.plasticMass * heightPerUnit
         var humanHeight = this.humanMass * heightPerUnit
         var height = humanHeight + plasticHeight
@@ -79,6 +79,7 @@ class Monument {
     constructor(numPillars) {
         this.pillars = []
         this.group = undefined
+        this.heightPerUnit = undefined
 
 
         let startingYear = 1950
@@ -96,13 +97,14 @@ class Monument {
         this.pillars.push(pillar)
         return pillar
     }
-    render(size=1, heightPerUnit=1) {
+    render(size=1, heightPerUnit=0.000000001) {
         /*
          * returns a THREE.Group containing a each pillar in the monumnet, lined one after the other
          * size: width & depth of each pillar
          * heightPerUnit: height of each unit of humanMass and plasticMass in pillar
          */
         this.group = new THREE.Group();
+        this.heightPerUnit = heightPerUnit
         this.pillars.forEach((pillar, index) => {
             let pillarGroup = pillar.render(size, heightPerUnit)
             //pillarGroup = pillar.generateBox(size, 10)
@@ -118,7 +120,7 @@ class Monument {
     }
     getCameraTargetPosition(index) {
         var position = this.getPosition(index)
-        position.y += this.pillars[index].height()
+        position.y += this.pillars[index].height(this.heightPerUnit)
         return position
     }
     getCameraPosition(index) {
