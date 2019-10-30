@@ -71,6 +71,9 @@ class Pillar {
         this.humanCube.material.color = new THREE.Color('green')
         this.plasticCube.material.color = new THREE.Color('blue')
     }
+    getPlasticRatio() {
+        return Math.round(this.plasticMass / this.humanMass, 2)
+    }
 }
 class Monument {
     /*

@@ -85,12 +85,22 @@ monument.pillars.forEach((pillar, index) => {
             panCam(index, 2000);
             monument.pillars.forEach((pillar) => { pillar.disable(); })
             monument.pillars[index].enable()
+
+            updateActivePillar(pillar)
         }
     })
     observer.observe(pillarTextEl);
     
     textEl.appendChild(pillarTextEl);
 });
+
+function updateActivePillar(pillar) {
+    var activePillarEl = document.querySelector('#activePillar')
+    activePillar.querySelector('#year').innerText = pillar.year
+    activePillar.querySelector('#humanMass h4').innerText = parseInt(pillar.humanMass).toLocaleString()
+    activePillar.querySelector('#plasticMass h4').innerText = parseInt(pillar.plasticMass).toLocaleString()
+    activePillar.querySelector('#ratio h4').innerText = pillar.getPlasticRatio()
+}
 
 
 // observe camera-cirlce
