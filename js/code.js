@@ -79,14 +79,23 @@ function updatePillarDetails(pillar) {
 
     var formatNum = (num) => { return parseInt(num.replace(/,/g, '')) }
     var humanValEl = document.querySelector('#humanMass h4')
-    new CountUp(humanValEl, parseInt(pillar.humanMass), {startVal: formatNum(humanValEl.innerText), duration: 3}).start();
+    new CountUp(humanValEl, parseInt(pillar.getHumanMassDisplay()), {
+        startVal: formatNum(humanValEl.innerText), 
+        duration: 3
+    }).start();
 
     var plasticValEl = document.querySelector('#plasticMass h4')
-    new CountUp(plasticValEl, parseInt(pillar.plasticMass), {startVal: formatNum(plasticValEl.innerText), duration: 3}).start();
+    new CountUp(plasticValEl, parseInt(pillar.getPlasticMassDisplay()), {
+        startVal: formatNum(plasticValEl.innerText),
+        duration: 3
+    }).start();
 
     var ratioValEl = document.querySelector('#ratio h4')
-    let numDecimalPlaces = pillar.getPlasticRatio() < 1 ? 3 : pillar.getPlasticRatio() < 2 ? 2 : 1
-    new CountUp(ratioValEl, pillar.getPlasticRatio(), {startVal: parseFloat(ratioValEl.innerText), decimalPlaces: numDecimalPlaces, duration: 7}).start();
+    new CountUp(ratioValEl, pillar.getPlasticRatio(), {
+        startVal: parseFloat(ratioValEl.innerText), 
+        decimalPlaces: pillar.getPlasticRatio() < 1 ? 3 : pillar.getPlasticRatio() < 2 ? 2 : 1, 
+        duration: 7
+    }).start();
     console.log(pillar.getPlasticRatio())
     document.querySelector('#ratio h5').innerText = pillar.getPlasticRatio() < 1 ? 'as much plastic as human' : 'more plastic than human'
 
@@ -96,24 +105,7 @@ function updatePillarDetails(pillar) {
 }
 
 function panCam(index,tweenDuration){
-
     TWEEN.removeAll();
-
-    //var camNewPosition= { x : xTarget, y : yTarget, z : zTarget};
-    //camNewPosition = {x: camNewPosition.x, y: camNewPosition.y, z: camNewPosition.z}
-    //var camNewPosition= new THREE.Vector3(xTarget,yTarget,zTarget).addScalar(10)
-
-
-    //var tst = new THREE.Vector3(xTarget,yTarget,zTarget)
-    //tst.sub(controls.target);
-    //console.log('tst', tst)
-
-    //camNewPosition = camera.position.clone().add(tst)
-    //camNewPosition = {x: camNewPosition.x, y: camNewPosition.y, z: camNewPosition.z}
-    //console.log('camNewPosition', camera.position, tst, camNewPosition)
-
-    //var camTween = new TWEEN.Tween(camera.position).to(camNewPosition, tweenDuration).easing(TWEEN.Easing.Quadratic.InOut).start();
-
 
     // stop autorotate camera - transitions back from rotating to panning mode
     controls.autoRotate = false;

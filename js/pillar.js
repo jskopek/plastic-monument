@@ -71,6 +71,14 @@ class Pillar {
         this.humanCube.material.color = new THREE.Color('green')
         this.plasticCube.material.color = new THREE.Color('blue')
     }
+    getHumanMassDisplay() {
+        // returns human mass in thousands of tons
+        return (this.humanMass / 1000).toFixed(1)
+    }
+    getPlasticMassDisplay() {
+        // returns plastic mass in thousands of tons
+        return (this.plasticMass / 1000).toFixed(1)
+    }
     getPlasticRatio() {
         let ratio = this.plasticMass / this.humanMass
         if( ratio < 1 ) {
