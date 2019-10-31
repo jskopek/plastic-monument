@@ -1,7 +1,9 @@
 import * as THREE from 'three';
 import TWEEN from 'tween';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
-import {Monument, ScaleGroupChildren} from './monument.js';
+import Monument from './monument.js';
+import Pillar from './pillar.js';
+import ScaleGroupChildren from './scalegroupchildren.js';
 const pillarData = require('../data.csv')
 require('../css/main.scss')
 
