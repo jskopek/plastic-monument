@@ -101,7 +101,8 @@ function updateActivePillar(pillar) {
     activePillar.querySelector('#year').innerText = pillar.year
     activePillar.querySelector('#humanMass h4').innerText = parseInt(pillar.humanMass).toLocaleString()
     activePillar.querySelector('#plasticMass h4').innerText = parseInt(pillar.plasticMass).toLocaleString()
-    activePillar.querySelector('#ratio h4').innerText = pillar.getPlasticRatio()
+    activePillar.querySelector('#ratio h4').innerText = pillar.getPlasticRatio() + 'x'
+    activePillar.querySelector('#ratio h5').innerText = pillar.getPlasticRatio() < 1 ? 'as much plastic as human' : 'more plastic than human'
 }
 
 

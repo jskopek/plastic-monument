@@ -72,7 +72,14 @@ class Pillar {
         this.plasticCube.material.color = new THREE.Color('blue')
     }
     getPlasticRatio() {
-        return Math.round(this.plasticMass / this.humanMass, 2)
+        let ratio = this.plasticMass / this.humanMass
+        if( ratio < 1 ) {
+            return ratio.toFixed(3)
+        } else if( ratio < 3 ) {
+            return ratio.toFixed(2)
+        } else {
+            return Math.round(ratio)
+        }
     }
 }
 
