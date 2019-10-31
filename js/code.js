@@ -104,23 +104,6 @@ function updatePillarDetails(pillar) {
     document.querySelector('.notes').innerText = pillar.notes
 }
 
-function panCam(index,tweenDuration){
-    TWEEN.removeAll();
-
-    // stop autorotate camera - transitions back from rotating to panning mode
-    controls.autoRotate = false;
-
-    let targetNewPos = monument.getCameraTargetPosition(index)
-    targetNewPos = {x : targetNewPos.x, y : targetNewPos.y, z : targetNewPos.z};
-    var targetTween = new TWEEN.Tween(controls.target).to(targetNewPos, tweenDuration).easing(TWEEN.Easing.Back.Out).start();
-
-    let targetNewCamPos = monument.getCameraPosition(index)
-    targetNewCamPos = {x : targetNewCamPos.x, y : targetNewCamPos.y, z : targetNewCamPos.z};
-    var targetTween = new TWEEN.Tween(camera.position).to(targetNewCamPos, tweenDuration).easing(TWEEN.Easing.Quadratic.Out).start();
-
-
-}
-
 // looping animation method
 function animate() {
     requestAnimationFrame(animate);
@@ -131,50 +114,62 @@ function animate() {
 }
 animate();
 
+// animation helper functions
+function toggleTitle(isShown) {
+    document.querySelector('#year').classList.toggle('hidden', isShown);
+    document.querySelector('.notes').classList.toggle('hidden', isShown);
+    document.querySelector('.measurements').classList.toggle('hidden', isShown);
+    document.querySelector('#monumentTitle').classList.toggle('hidden', !isShown);
+    controls.autoRotate = isShown;
+}
+function setActivePillar(index) {
+    if(!monument.pillars[index]) { return; }
 
-// handling scroller
-let scroller = new Scroller(document.querySelector('.scroller'))
-scroller.add('title')
-monument.pillars.forEach((pillar) => { scroller.add(pillar, 0.2) });
-scroller.on('scroll', (scrollItem, index) => {
+    window.activePillarIndex = index;
 
-    document.querySelector('#year').classList.toggle('hidden', !(scrollItem instanceof Pillar));
-    document.querySelector('.notes').classList.toggle('hidden', !(scrollItem instanceof Pillar));
-    document.querySelector('.measurements').classList.toggle('hidden', !(scrollItem instanceof Pillar));
-    document.querySelector('#monumentTitle').classList.toggle('hidden', scrollItem != 'title');
+    let pillar = monument.pillars[index];
 
+    monument.pillars.forEach((pillar) => { pillar.disable(); })
+    pillar.enable()
 
-    controls.autoRotate = !(scrollItem instanceof Pillar);
+    updatePillarDetails(pillar)
 
-    if(scrollItem instanceof Pillar) {
+    // remove existing animations
+    TWEEN.removeAll();
 
-        let pillar = scrollItem;
-        let pillarIndex = index - 1; //offset the initial `title` scrollItem in the scroller
-        panCam(pillarIndex, 2000);
-        monument.pillars.forEach((pillar) => { pillar.disable(); })
-        monument.pillars[pillarIndex].enable()
+    let tweenDuration = 2000;
 
-        updatePillarDetails(pillar)
-    } else {
-        monument.pillars.forEach((pillar) => { pillar.enable(); })
-    }
-    console.log('scroller.scroll', scrollItem)
-});
-scroller.add('title', 2)
+    // stop autorotate camera - transitions back from rotating to panning mode
+    controls.autoRotate = false;
+
+    // animate target change
+    let targetNewPos = monument.getCameraTargetPosition(index)
+    targetNewPos = {x : targetNewPos.x, y : targetNewPos.y, z : targetNewPos.z};
+    var targetTween = new TWEEN.Tween(controls.target).to(targetNewPos, tweenDuration).easing(TWEEN.Easing.Back.Out).start();
+
+    // animate camera change
+    let targetNewCamPos = monument.getCameraPosition(index)
+    targetNewCamPos = {x : targetNewCamPos.x, y : targetNewCamPos.y, z : targetNewCamPos.z};
+    var targetTween = new TWEEN.Tween(camera.position).to(targetNewCamPos, tweenDuration).easing(TWEEN.Easing.Quadratic.Out).start();
+}
+function getActivePillarIndex() { return window.activePillarIndex || 0; }
+// end animation helper functions
 
 // handling prev/next
 let playStepInterval = 6000
 
-document.querySelector('#btnPrev').addEventListener('click', (e) => { pause(); scroller.scrollPrevious(); })
-document.querySelector('#btnNext').addEventListener('click', (e) => { pause(); scroller.scrollNext(); })
+document.querySelector('#btnPrev').addEventListener('click', (e) => { pause(); toggleTitle(false); setActivePillar(getActivePillarIndex() - 1) })
+document.querySelector('#btnNext').addEventListener('click', (e) => { pause(); toggleTitle(false); setActivePillar(getActivePillarIndex() + 1) })
 document.querySelector('#btnPlayPause').addEventListener('click', (e) => { if(window.playInterval) { pause(); } else { play(); } });
 
 function play()  {
     window.playInterval = setInterval(() => {
-        if(scroller.canScrollNext()) {
-            scroller.scrollNext();
+        if(getActivePillarIndex() < (monument.pillars.length - 1)) {
+            toggleTitle(false);
+            setActivePillar(getActivePillarIndex() + 1)
         } else {
-            scroller.scrollTo(0);
+            toggleTitle(true);
+            setActivePillar(0)
         }
     }, playStepInterval);
     document.querySelector('#btnPlayPause i').classList.add('fa-pause')
@@ -186,7 +181,28 @@ function pause()  {
     document.querySelector('#btnPlayPause i').classList.remove('fa-pause')
     document.querySelector('#btnPlayPause i').classList.add('fa-play')
 }
+toggleTitle(true);
 play();
 
+//// handling scroller
+//let scroller = new Scroller(document.querySelector('.scroller'))
+//scroller.add('title')
+//monument.pillars.forEach((pillar) => { scroller.add(pillar, 0.2) });
+//scroller.on('scroll', (scrollItem, index) => {
+//
+//    if(scrollItem instanceof Pillar) {
+//        toggleTitle(false);
+//        let pillarIndex = index - 1; //offset the initial `title` scrollItem in the scroller
+//        setActivePillar(pillarIndex)
+//        window.activePillarIndex = pillarIndex;
+//    } else {
+//        toggleTitle(true);
+//        monument.pillars.forEach((pillar) => { pillar.enable(); })
+//    }
+//    console.log('scroller.scroll', scrollItem)
+//});
+//scroller.add('title', 2)
+
+
 // DEBUG VALUES
-window.debug = {renderer, monument, scene, camera, monumentGroup, THREE, scroller}
+//window.debug = {renderer, monument, scene, camera, monumentGroup, THREE, scroller}
