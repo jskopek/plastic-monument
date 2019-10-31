@@ -4,6 +4,7 @@
 		<meta charset="utf-8">
 		<title>My first three.js app</title>
         <link href="https://fonts.googleapis.com/css?family=Roboto|Rosario&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous" />
 
         <!--<link rel="stylesheet" type="text/css" href="css/main.css"/>-->
 	</head>
@@ -22,7 +23,7 @@
                     <h4>-</h4>
                     <div class="label">
                         <h6>Tonnes</h6>
-                        <h5>Human Mass</h5>
+                        <h5>Plastic Mass</h5>
                     </div>
                 </div>
                 <div class="measurement" id="ratio">
@@ -35,9 +36,13 @@
             <div class="notes"></div>
         </div>
         <h1 id="monumentTitle" class="showHide">Plastic Monument</h1>
-        <div id="signUp" class="showHide hidden">
-            <p>Notify me when the monument will be exhibited</p>
-        '</div>
+
+        <div id="controls">
+            <button class="button" id="btnPrev"><i class="fa fa-backward"></i></button>
+            <button class="button" id="btnPlayPause"><i class="fa fa-play"></i></button>
+            <button class="button" id="btnNext"><i class="fa fa-forward"></i></button>
+            <a href="https://airtable.com/shrHStKd4QEJ7UGku" target="_blank" class="button"><i class="fa fa-envelope-square"></i></a>
+        </div>
 
 
         <!-- <div class="camera-circle"></div> -->

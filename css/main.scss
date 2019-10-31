@@ -1,4 +1,9 @@
-body { margin: 0; }
+body { 
+    margin: 0; 
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+}
 canvas { width: 100%; height: 100% }
 
 /*
@@ -16,7 +21,7 @@ canvas { width: 100%; height: 100% }
 */
 
 #container {
-    position: fixed;
+    position: absolute;
     width: 100%;
     height: 100%;
     top: 0;
@@ -36,13 +41,10 @@ canvas { width: 100%; height: 100% }
 }
 
 #activePillar {
-    position: fixed;
+    position: absolute;
     top: 30px;
     left: 80px;
 
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: normal;
     color: #fff;
 
 
@@ -84,8 +86,6 @@ canvas { width: 100%; height: 100% }
     }
 
     .notes {
-        /* In The Graduate, one of the top movies of 1968, Dustin Hoffman’s character was urged by an older acquaintance to make a career in plastics. Audiences cringed along with Hoffman at what they saw as misplaced enthusiasm for an industry that, rather than being full of possibilities, was a symbol of cheap conformity and superficiality. */
-
         font-size: 18px;
         line-height: 21px;
     }
@@ -112,6 +112,13 @@ canvas { width: 100%; height: 100% }
 }
 
 .scroller {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow-y: auto;
+
     div {
         //width: 200px;
         //background: red;
@@ -124,7 +131,7 @@ canvas { width: 100%; height: 100% }
 }
 
 #monumentTitle {
-    position: fixed;
+    position: absolute;
     top: 100px;
     left: 100px;
     color: #fff;
@@ -138,4 +145,35 @@ canvas { width: 100%; height: 100% }
     &.hidden {
         opacity: 0;
     }
+}
+
+#signUp {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+
+    color: #fff;
+    z-index: 2;
+
+}
+
+.button {
+    color: #fff;
+    border: 4px solid #fff;
+    border-radius: 50px;
+    padding: 0.8em 1em;
+    text-decoration: none;
+    background: rgba(0,0,0,0.5);
+    text-align: center;
+    font-weight: bold;
+    display: inline-block;
+}
+
+#controls {
+    position: absolute;
+    z-index: 3;
+    top: 10px;
+    right: 10px;
 }

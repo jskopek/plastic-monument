@@ -196,14 +196,11 @@ scroller.on('scroll', (scrollItem, index) => {
 
     document.querySelector('#activePillar').classList.toggle('hidden', !(scrollItem instanceof Pillar));
     document.querySelector('#monumentTitle').classList.toggle('hidden', scrollItem != 'title');
-    document.querySelector('#signUp').classList.toggle('hidden', scrollItem != 'sign-up');
 
 
     controls.autoRotate = !(scrollItem instanceof Pillar);
 
-    if(scrollItem == 'title') {
-    } else if(scrollItem == 'sign-up') {
-    } else if(scrollItem instanceof Pillar) {
+    if(scrollItem instanceof Pillar) {
 
         let pillar = scrollItem;
         let pillarIndex = index - 1; //offset the initial `title` scrollItem in the scroller
@@ -212,11 +209,37 @@ scroller.on('scroll', (scrollItem, index) => {
         monument.pillars[pillarIndex].enable()
 
         updateActivePillar(pillar)
-
+    } else {
+        monument.pillars.forEach((pillar) => { pillar.enable(); })
     }
     console.log('scroller.scroll', scrollItem)
 });
-scroller.add('sign-up', 2)
+scroller.add('title', 2)
+
+// handling prev/next
+let playStepInterval = 8000
+
+document.querySelector('#btnPrev').addEventListener('click', (e) => { pause(); scroller.scrollPrevious(); })
+document.querySelector('#btnNext').addEventListener('click', (e) => { pause(); scroller.scrollNext(); })
+document.querySelector('#btnPlayPause').addEventListener('click', (e) => { if(window.playInterval) { pause(); } else { play(); } });
+
+function play()  {
+    window.playInterval = setInterval(() => {
+        if(scroller.canScrollNext()) {
+            scroller.scrollNext();
+        } else {
+            scroller.scrollTo(0);
+        }
+    }, playStepInterval);
+    document.querySelector('#btnPlayPause i').classList.add('fa-pause')
+    document.querySelector('#btnPlayPause i').classList.remove('fa-play')
+}
+function pause()  {
+    clearInterval(window.playInterval);
+    window.playInterval = undefined
+    document.querySelector('#btnPlayPause i').classList.remove('fa-pause')
+    document.querySelector('#btnPlayPause i').classList.add('fa-play')
+}
 
 // DEBUG VALUES
 window.debug = {renderer, monument, scene, camera, monumentGroup, scale, THREE, scroller}
