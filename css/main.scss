@@ -40,81 +40,70 @@ canvas { width: 100%; height: 100% }
     height: 100vh;
 }
 
-#activePillar {
-    position: absolute;
-    top: 30px;
-    left: 80px;
-
-    color: #fff;
-
-
-    #year {
-        font-family: Rosario;
-        font-size: 96px;
-        line-height: 116px;
-        text-align: right;
-    }
-    .measurements {
-
-        .measurement {
-
-
-
-            h4, h5, h6 {
-                margin: 0;
-            }
-            h4 {
-                font-size: 48px;
-                line-height: 56px;
-                text-shadow: 0 0 10px #000;
-            }
-            .label {
-                display: flex;
-                justify-content: space-between;
-                flex-direction: row-reverse;
-
-                h5 {
-                    font-size: 18px;
-                    line-height: 21px;
-                }
-                h6 {
-                    font-size: 18px;
-                    line-height: 21px;
-                    color: #8A8A8A;
-                }
-            }
-
-            &#ratio h4:after {
-                content: 'x';
-            }
-        }
-    }
-
-    .notes {
-        font-size: 18px;
-        line-height: 21px;
-        text-shadow: 0 0 10px #000;
-    }
-
-
-    // sizing
-
+.measurements {
     display: flex;
-    align-items: flex-end;
-    width: 600px;
+    justify-content: space-between;
+    position: absolute;
+    bottom: 80px;
+    left: 80px;
+    right: 80px;
+    color: #fff;
 
     .measurement {
         text-align: right;
-    }
-    #year { 
-        text-align: right;
-    }
-    .measurements, .notes {
-    }
-    .notes {
-        margin: 1.5em 0 0 1.5em;
-    }
 
+        h4, h5, h6 {
+            margin: 0;
+        }
+        h4 {
+            font-size: 48px;
+            line-height: 56px;
+            text-shadow: 0 0 10px #000;
+        }
+        .label {
+            display: flex;
+            justify-content: space-between;
+            flex-direction: row-reverse;
+
+            h5 {
+                font-size: 18px;
+                line-height: 21px;
+            }
+            h6 {
+                font-size: 18px;
+                line-height: 21px;
+                color: #8A8A8A;
+            }
+        }
+
+        &#ratio h4:after {
+            content: 'x';
+        }
+    }
+}
+
+#year {
+    position: absolute;
+    top: 40px;
+    left: 80px;
+
+    font-family: Rosario;
+    font-size: 96px;
+    text-align: right;
+    color: #fff;
+    margin: 0;
+}
+
+.notes {
+    position: absolute;
+    top: 175px;
+    left: 80px;
+    width: 600px;
+
+    color: #fff;
+    font-size: 18px;
+    text-shadow: 0 0 10px #000;
+    margin: 0;
 }
 
 .scroller {
@@ -140,7 +129,16 @@ canvas { width: 100%; height: 100% }
     position: absolute;
     top: 100px;
     left: 100px;
-    color: #fff;
+    color: #ccc;
+        font-family: Rosario;
+
+    span:first-child {
+        color: #333;
+        font-size: 0.9em;
+    }
+    span:last-child {
+        color: #fff;
+    }
 }
 
 // handle visible/hidden transition

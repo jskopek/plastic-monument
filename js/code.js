@@ -74,9 +74,8 @@ scene.add(monumentGroup);
 // let scale = new ScaleGroupChildren(monumentGroup);
 // scale.animate(1);
 
-function updateActivePillar(pillar) {
-    var activePillarEl = document.querySelector('#activePillar')
-    activePillar.querySelector('#year').innerText = pillar.year
+function updatePillarDetails(pillar) {
+    document.querySelector('#year').innerText = pillar.year
 
     var formatNum = (num) => { return parseInt(num.replace(/,/g, '')) }
     var humanValEl = document.querySelector('#humanMass h4')
@@ -89,27 +88,13 @@ function updateActivePillar(pillar) {
     let numDecimalPlaces = pillar.getPlasticRatio() < 1 ? 3 : pillar.getPlasticRatio() < 2 ? 2 : 1
     new CountUp(ratioValEl, pillar.getPlasticRatio(), {startVal: parseFloat(ratioValEl.innerText), decimalPlaces: numDecimalPlaces, duration: 7}).start();
     console.log(pillar.getPlasticRatio())
-    activePillar.querySelector('#ratio h5').innerText = pillar.getPlasticRatio() < 1 ? 'as much plastic as human' : 'more plastic than human'
+    document.querySelector('#ratio h5').innerText = pillar.getPlasticRatio() < 1 ? 'as much plastic as human' : 'more plastic than human'
 
 
     //activePillar.querySelector('#ratio h4').innerText = pillar.getPlasticRatio() + 'x'
-    activePillar.querySelector('.notes').innerText = pillar.notes
+    document.querySelector('.notes').innerText = pillar.notes
 }
 
-
-//// observe camera-cirlce
-//document.querySelectorAll('.camera-circle').forEach((el) => {
-//    let cameraCircleObserver = new IntersectionObserver((el) => {
-//        controls.autoRotate = true;
-//        console.log('cameraCircleObserver');
-//    })
-//
-//    cameraCircleObserver.observe(el);
-//});
-// 
-
-
-/// ---- TESTING ANIMATED CAMERA
 function panCam(index,tweenDuration){
 
     TWEEN.removeAll();
@@ -144,28 +129,6 @@ function panCam(index,tweenDuration){
 
 }
 
-//panCam(10,-47,2, 1000);
-function testCamera(index) {
-
-    if(index >= monumentGroup.children.length) { return }
-
-    panCam(index, 1000);
-
-    monument.pillars.forEach((pillar) => { pillar.disable(); })
-    monument.pillars[index].enable()
-
-    setTimeout(() => {
-        testCamera(index + 1)
-        //testCamera(parseInt(Math.random() * monument.pillars.length))
-    }, 2000);
-}
-//testCamera(0)
-
-//setTimeout(() => {
-//    panCam(-20,-37,23, 1000);
-//}, 5000);
-/// ---- END TESTING ANIMATED CAMERA
-
 // looping animation method
 function animate() {
     requestAnimationFrame(animate);
@@ -183,7 +146,9 @@ scroller.add('title')
 monument.pillars.forEach((pillar) => { scroller.add(pillar, 0.2) });
 scroller.on('scroll', (scrollItem, index) => {
 
-    document.querySelector('#activePillar').classList.toggle('hidden', !(scrollItem instanceof Pillar));
+    document.querySelector('#year').classList.toggle('hidden', !(scrollItem instanceof Pillar));
+    document.querySelector('.notes').classList.toggle('hidden', !(scrollItem instanceof Pillar));
+    document.querySelector('.measurements').classList.toggle('hidden', !(scrollItem instanceof Pillar));
     document.querySelector('#monumentTitle').classList.toggle('hidden', scrollItem != 'title');
 
 
@@ -197,7 +162,7 @@ scroller.on('scroll', (scrollItem, index) => {
         monument.pillars.forEach((pillar) => { pillar.disable(); })
         monument.pillars[pillarIndex].enable()
 
-        updateActivePillar(pillar)
+        updatePillarDetails(pillar)
     } else {
         monument.pillars.forEach((pillar) => { pillar.enable(); })
     }
