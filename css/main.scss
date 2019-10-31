@@ -113,13 +113,14 @@ canvas { width: 100%; height: 100% }
 
 .scroller {
     div {
-        width: 200px;
-        background: red;
-        border: 10px solid green;
+        //width: 200px;
+        //background: red;
+        //border: 10px solid green;
     }
     div:last-child {
         margin-bottom: 101vh; // this is a nasty hack to get around the last focus issue
     }
+
 }
 
 #monumentTitle {
@@ -127,10 +128,14 @@ canvas { width: 100%; height: 100% }
     top: 100px;
     left: 100px;
     color: #fff;
-    opacity: 1;
-    transition: 1s
+}
 
-    .hidden {
+// handle visible/hidden transition
+.showHide {
+    opacity: 1;
+    transition: .5s all;
+
+    &.hidden {
         opacity: 0;
     }
 }

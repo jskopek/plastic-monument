@@ -192,27 +192,31 @@ animate();
 let scroller = new Scroller(document.querySelector('.scroller'))
 scroller.add('title')
 monument.pillars.forEach((pillar) => { scroller.add(pillar, 0.2) });
-scroller.events.on('scroll', (element, index) => {
-    if(element == 'title') {
-    } else if(element == 'sign-up') {
-        document.querySelector('#activePillar').classList.add('hidden');
-        document.querySelector('#monumentTitle').classList.remove('hidden');
+scroller.on('scroll', (scrollItem, index) => {
 
-    } else {
-        document.querySelector('#activePillar').classList.remove('hidden');
-        document.querySelector('#monumentTitle').classList.add('hidden');
+    document.querySelector('#activePillar').classList.toggle('hidden', !(scrollItem instanceof Pillar));
+    document.querySelector('#monumentTitle').classList.toggle('hidden', scrollItem != 'title');
+    document.querySelector('#signUp').classList.toggle('hidden', scrollItem != 'sign-up');
 
-        let pillar = element;
-        panCam(index, 2000);
+
+    controls.autoRotate = !(scrollItem instanceof Pillar);
+
+    if(scrollItem == 'title') {
+    } else if(scrollItem == 'sign-up') {
+    } else if(scrollItem instanceof Pillar) {
+
+        let pillar = scrollItem;
+        let pillarIndex = index - 1; //offset the initial `title` scrollItem in the scroller
+        panCam(pillarIndex, 2000);
         monument.pillars.forEach((pillar) => { pillar.disable(); })
-        monument.pillars[index].enable()
+        monument.pillars[pillarIndex].enable()
 
         updateActivePillar(pillar)
 
     }
-    console.log('scroller.scroll', element, index)
+    console.log('scroller.scroll', scrollItem)
 });
 scroller.add('sign-up', 2)
 
 // DEBUG VALUES
-window.debug = {renderer, monument, scene, camera, monumentGroup, scale, THREE}
+window.debug = {renderer, monument, scene, camera, monumentGroup, scale, THREE, scroller}
