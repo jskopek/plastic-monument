@@ -24,9 +24,8 @@ canvas { width: 100%; height: 100% }
     z-index: -1;
 }
 
-#text {
-    z-index: 1;
-    visibility: hidden;
+.scroller {
+    z-index: 1
 }
 
 .camera-circle {
@@ -110,4 +109,28 @@ canvas { width: 100%; height: 100% }
         margin: 1.5em 0 0 1.5em;
     }
 
+}
+
+.scroller {
+    div {
+        width: 200px;
+        background: red;
+        border: 10px solid green;
+    }
+    div:last-child {
+        margin-bottom: 101vh; // this is a nasty hack to get around the last focus issue
+    }
+}
+
+#monumentTitle {
+    position: fixed;
+    top: 100px;
+    left: 100px;
+    color: #fff;
+    opacity: 1;
+    transition: 1s
+
+    .hidden {
+        opacity: 0;
+    }
 }

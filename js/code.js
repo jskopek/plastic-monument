@@ -4,6 +4,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import Monument from './monument.js';
 import Pillar from './pillar.js';
 import ScaleGroupChildren from './scalegroupchildren.js';
+import Scroller from './scroller.js'
 const pillarData = require('../data.csv')
 require('../css/main.scss')
 
@@ -73,28 +74,28 @@ let scale = new ScaleGroupChildren(monumentGroup);
 //scale.animate(1);
 
 
-// generate text content
-let textEl = document.querySelector('#text')
-monument.pillars.forEach((pillar, index) => {
-    var pillarTextEl = document.createElement('div')
-    pillarTextEl.innerHTML = pillar.renderText();
-
-    let observer = new IntersectionObserver((entries) => {
-        if(entries[0].boundingClientRect.y < 0) {
-            console.log('past something', pillar.year, index);
-
-
-            panCam(index, 2000);
-            monument.pillars.forEach((pillar) => { pillar.disable(); })
-            monument.pillars[index].enable()
-
-            updateActivePillar(pillar)
-        }
-    })
-    observer.observe(pillarTextEl);
-    
-    textEl.appendChild(pillarTextEl);
-});
+//// generate text content
+//let textEl = document.querySelector('#text')
+//monument.pillars.forEach((pillar, index) => {
+//    var pillarTextEl = document.createElement('div')
+//    pillarTextEl.innerHTML = pillar.renderText();
+//
+//    let observer = new IntersectionObserver((entries) => {
+//        if(entries[0].boundingClientRect.y < 0) {
+//            console.log('past something', pillar.year, index);
+//
+//
+//            panCam(index, 2000);
+//            monument.pillars.forEach((pillar) => { pillar.disable(); })
+//            monument.pillars[index].enable()
+//
+//            updateActivePillar(pillar)
+//        }
+//    })
+//    observer.observe(pillarTextEl);
+//    
+//    textEl.appendChild(pillarTextEl);
+//});
 
 function updateActivePillar(pillar) {
     var activePillarEl = document.querySelector('#activePillar')
@@ -107,16 +108,16 @@ function updateActivePillar(pillar) {
 }
 
 
-// observe camera-cirlce
-document.querySelectorAll('.camera-circle').forEach((el) => {
-    let cameraCircleObserver = new IntersectionObserver((el) => {
-        controls.autoRotate = true;
-        console.log('cameraCircleObserver');
-    })
-
-    cameraCircleObserver.observe(el);
-});
- 
+//// observe camera-cirlce
+//document.querySelectorAll('.camera-circle').forEach((el) => {
+//    let cameraCircleObserver = new IntersectionObserver((el) => {
+//        controls.autoRotate = true;
+//        console.log('cameraCircleObserver');
+//    })
+//
+//    cameraCircleObserver.observe(el);
+//});
+// 
 
 
 /// ---- TESTING ANIMATED CAMERA
@@ -186,6 +187,32 @@ function animate() {
 }
 animate();
 
+
+// handling scroller
+let scroller = new Scroller(document.querySelector('.scroller'))
+scroller.add('title')
+monument.pillars.forEach((pillar) => { scroller.add(pillar, 0.2) });
+scroller.events.on('scroll', (element, index) => {
+    if(element == 'title') {
+    } else if(element == 'sign-up') {
+        document.querySelector('#activePillar').classList.add('hidden');
+        document.querySelector('#monumentTitle').classList.remove('hidden');
+
+    } else {
+        document.querySelector('#activePillar').classList.remove('hidden');
+        document.querySelector('#monumentTitle').classList.add('hidden');
+
+        let pillar = element;
+        panCam(index, 2000);
+        monument.pillars.forEach((pillar) => { pillar.disable(); })
+        monument.pillars[index].enable()
+
+        updateActivePillar(pillar)
+
+    }
+    console.log('scroller.scroll', element, index)
+});
+scroller.add('sign-up', 2)
 
 // DEBUG VALUES
 window.debug = {renderer, monument, scene, camera, monumentGroup, scale, THREE}
