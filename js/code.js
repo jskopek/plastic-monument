@@ -3,10 +3,11 @@ import TWEEN from 'tween';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import Monument from './monument.js';
 import Pillar from './pillar.js';
-import ScaleGroupChildren from './scalegroupchildren.js';
 import Scroller from './scroller.js'
+import { CountUp } from 'countup.js'
 const pillarData = require('../data.csv')
 require('../css/main.scss')
+// import ScaleGroupChildren from './scalegroupchildren.js';
 
 
 // initialize renderer
@@ -70,40 +71,28 @@ monumentGroup.position.set(0,0,10);
 scene.add(monumentGroup);
 
 // run scaler
-let scale = new ScaleGroupChildren(monumentGroup);
-//scale.animate(1);
-
-
-//// generate text content
-//let textEl = document.querySelector('#text')
-//monument.pillars.forEach((pillar, index) => {
-//    var pillarTextEl = document.createElement('div')
-//    pillarTextEl.innerHTML = pillar.renderText();
-//
-//    let observer = new IntersectionObserver((entries) => {
-//        if(entries[0].boundingClientRect.y < 0) {
-//            console.log('past something', pillar.year, index);
-//
-//
-//            panCam(index, 2000);
-//            monument.pillars.forEach((pillar) => { pillar.disable(); })
-//            monument.pillars[index].enable()
-//
-//            updateActivePillar(pillar)
-//        }
-//    })
-//    observer.observe(pillarTextEl);
-//    
-//    textEl.appendChild(pillarTextEl);
-//});
+// let scale = new ScaleGroupChildren(monumentGroup);
+// scale.animate(1);
 
 function updateActivePillar(pillar) {
     var activePillarEl = document.querySelector('#activePillar')
     activePillar.querySelector('#year').innerText = pillar.year
-    activePillar.querySelector('#humanMass h4').innerText = parseInt(pillar.humanMass).toLocaleString()
-    activePillar.querySelector('#plasticMass h4').innerText = parseInt(pillar.plasticMass).toLocaleString()
-    activePillar.querySelector('#ratio h4').innerText = pillar.getPlasticRatio() + 'x'
+
+    var formatNum = (num) => { return parseInt(num.replace(/,/g, '')) }
+    var humanValEl = document.querySelector('#humanMass h4')
+    new CountUp(humanValEl, parseInt(pillar.humanMass), {startVal: formatNum(humanValEl.innerText), duration: 3}).start();
+
+    var plasticValEl = document.querySelector('#plasticMass h4')
+    new CountUp(plasticValEl, parseInt(pillar.plasticMass), {startVal: formatNum(plasticValEl.innerText), duration: 3}).start();
+
+    var ratioValEl = document.querySelector('#ratio h4')
+    let numDecimalPlaces = pillar.getPlasticRatio() < 1 ? 3 : pillar.getPlasticRatio() < 2 ? 2 : 1
+    new CountUp(ratioValEl, pillar.getPlasticRatio(), {startVal: parseFloat(ratioValEl.innerText), decimalPlaces: numDecimalPlaces, duration: 7}).start();
+    console.log(pillar.getPlasticRatio())
     activePillar.querySelector('#ratio h5').innerText = pillar.getPlasticRatio() < 1 ? 'as much plastic as human' : 'more plastic than human'
+
+
+    //activePillar.querySelector('#ratio h4').innerText = pillar.getPlasticRatio() + 'x'
     activePillar.querySelector('.notes').innerText = pillar.notes
 }
 
@@ -217,7 +206,7 @@ scroller.on('scroll', (scrollItem, index) => {
 scroller.add('title', 2)
 
 // handling prev/next
-let playStepInterval = 8000
+let playStepInterval = 6000
 
 document.querySelector('#btnPrev').addEventListener('click', (e) => { pause(); scroller.scrollPrevious(); })
 document.querySelector('#btnNext').addEventListener('click', (e) => { pause(); scroller.scrollNext(); })
@@ -240,6 +229,7 @@ function pause()  {
     document.querySelector('#btnPlayPause i').classList.remove('fa-pause')
     document.querySelector('#btnPlayPause i').classList.add('fa-play')
 }
+play();
 
 // DEBUG VALUES
-window.debug = {renderer, monument, scene, camera, monumentGroup, scale, THREE, scroller}
+window.debug = {renderer, monument, scene, camera, monumentGroup, THREE, scroller}

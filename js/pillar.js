@@ -78,7 +78,8 @@ class Pillar {
         } else if( ratio < 3 ) {
             return ratio.toFixed(2)
         } else {
-            return Math.round(ratio)
+            return ratio.toFixed(1)
+            //return Math.round(ratio)
         }
     }
 }
