@@ -37,39 +37,77 @@ canvas { width: 100%; height: 100% }
 }
 
 #activePillar {
-    color: #fff;
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 30%;
+    top: 30px;
+    left: 80px;
 
-    h1 {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    color: #fff;
+
+
+    #year {
         font-family: Rosario;
-        font-style: normal;
-        font-weight: normal;
         font-size: 96px;
         line-height: 116px;
+        text-align: right;
+    }
+    .measurements {
+
+        .measurement {
+
+
+
+            h4, h5, h6 {
+                margin: 0;
+            }
+            h4 {
+                font-size: 48px;
+                line-height: 56px;
+            }
+            .label {
+                display: flex;
+                justify-content: space-between;
+                flex-direction: row-reverse;
+
+                h5 {
+                    font-size: 18px;
+                    line-height: 21px;
+                }
+                h6 {
+                    font-size: 18px;
+                    line-height: 21px;
+                    color: #8A8A8A;
+                }
+            }
+        }
     }
 
-    .measurement {
-        h4, h5, h6 {
-            font-family: Roboto;
-            font-style: normal;
-            font-weight: normal;
-            margin: 0;
-        }
-        h4 {
-            font-size: 48px;
-            line-height: 56px;
-        }
-        h5 {
-            font-size: 18px;
-            line-height: 21px;
-        }
-        h6 {
-            font-size: 18px;
-            line-height: 21px;
-            color: #8A8A8A;
-        }
+    .notes {
+        /* In The Graduate, one of the top movies of 1968, Dustin Hoffman’s character was urged by an older acquaintance to make a career in plastics. Audiences cringed along with Hoffman at what they saw as misplaced enthusiasm for an industry that, rather than being full of possibilities, was a symbol of cheap conformity and superficiality. */
+
+        font-size: 18px;
+        line-height: 21px;
     }
+
+
+    // sizing
+
+    display: flex;
+    align-items: flex-end;
+    width: 600px;
+
+    .measurement {
+        text-align: right;
+    }
+    #year { 
+        text-align: right;
+    }
+    .measurements, .notes {
+    }
+    .notes {
+        margin: 1.5em 0 0 1.5em;
+    }
+
 }
