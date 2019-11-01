@@ -184,24 +184,24 @@ function pause()  {
 toggleTitle(true);
 play();
 
-//// handling scroller
-//let scroller = new Scroller(document.querySelector('.scroller'))
-//scroller.add('title')
-//monument.pillars.forEach((pillar) => { scroller.add(pillar, 0.2) });
-//scroller.on('scroll', (scrollItem, index) => {
-//
-//    if(scrollItem instanceof Pillar) {
-//        toggleTitle(false);
-//        let pillarIndex = index - 1; //offset the initial `title` scrollItem in the scroller
-//        setActivePillar(pillarIndex)
-//        window.activePillarIndex = pillarIndex;
-//    } else {
-//        toggleTitle(true);
-//        monument.pillars.forEach((pillar) => { pillar.enable(); })
-//    }
-//    console.log('scroller.scroll', scrollItem)
-//});
-//scroller.add('title', 2)
+// handling scroller
+let scroller = new Scroller(document.querySelector('.scroller'))
+scroller.add('title')
+monument.pillars.forEach((pillar) => { scroller.add(pillar, 0.2) });
+scroller.on('scroll', (scrollItem, index) => {
+
+    if(scrollItem instanceof Pillar) {
+        toggleTitle(false);
+        let pillarIndex = index - 1; //offset the initial `title` scrollItem in the scroller
+        setActivePillar(pillarIndex)
+        window.activePillarIndex = pillarIndex;
+    } else {
+        toggleTitle(true);
+        monument.pillars.forEach((pillar) => { pillar.enable(); })
+    }
+    console.log('scroller.scroll', scrollItem)
+});
+scroller.add('title', 2)
 
 
 // DEBUG VALUES
