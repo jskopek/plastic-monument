@@ -151,6 +151,10 @@ function setActivePillar(index) {
     let targetNewCamPos = monument.getCameraPosition(index)
     targetNewCamPos = {x : targetNewCamPos.x, y : targetNewCamPos.y, z : targetNewCamPos.z};
     var targetTween = new TWEEN.Tween(camera.position).to(targetNewCamPos, tweenDuration).easing(TWEEN.Easing.Quadratic.Out).start();
+
+    // update interactive lights
+    fetch(`http://localhost:3000/leds/${index + 1}`).then(response => {});
+
 }
 function getActivePillarIndex() { return window.activePillarIndex || 0; }
 // end animation helper functions

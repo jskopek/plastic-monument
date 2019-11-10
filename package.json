@@ -9,7 +9,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.5",
     "countup.js": "^2.0.4",
+    "express": "^4.17.1",
+    "node-pixel": "github:ajfisher/node-pixel#j5-firmata-upg",
     "three": "^0.109.0",
     "tween": "^0.9.0"
   },
@@ -20,6 +23,6 @@
     "sass-loader": "^8.0.0",
     "style-loader": "^1.0.0",
     "webpack": "^4.41.2",
-    "webpack-cli": "^3.3.9"
+    "webpack-cli": "^3.3.10"
   }
 }
