@@ -1,3 +1,6 @@
+@import "./bootstrap-4.3/bootstrap";
+
+
 body { 
     margin: 0; 
     font-family: Roboto;
@@ -20,163 +23,171 @@ canvas { width: 100%; height: 100% }
 }
 */
 
-#container {
-    position: absolute;
+#monument {
+    position: fixed;
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
     z-index: -1;
 }
-
-.scroller {
-    z-index: 1
-}
-
-.camera-circle {
-    /* a huge area for the camera to circle around the monument */
-    /*height: 100vh;*/
-    margin: 200vh;
+.cover {
     height: 100vh;
-}
-
-.measurements {
-    display: flex;
-    justify-content: space-between;
-    position: absolute;
-    bottom: 80px;
-    left: 80px;
-    right: 80px;
-    color: #fff;
-
-    .measurement {
-        text-align: right;
-
-        h4, h5, h6 {
-            margin: 0;
-        }
-        h4 {
-            font-size: 48px;
-            line-height: 56px;
-            text-shadow: 0 0 10px #000;
-        }
-        .label {
-            display: flex;
-            justify-content: space-between;
-            flex-direction: row-reverse;
-
-            h5 {
-                font-size: 18px;
-            }
-            h6 {
-                font-size: 18px;
-                margin-left: 1em;
-                color: #8A8A8A;
-            }
-        }
-
-        &#ratio h4:after {
-            content: 'x';
-        }
+    position: relative;
+    h1 {
+        position: absolute;
+        bottom: 10vh;
     }
 }
 
-#year {
-    position: absolute;
-    top: 40px;
-    left: 80px;
-
-    font-family: Rosario;
-    font-size: 96px;
-    text-align: right;
-    color: #fff;
-    margin: 0;
-}
-
-.notes {
-    position: absolute;
-    top: 175px;
-    left: 80px;
-    width: 600px;
-
-    color: #fff;
-    font-size: 18px;
-    text-shadow: 0 0 10px #000;
-    margin: 0;
-}
-
-.scroller {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    overflow-y: auto;
-
-    div {
-        //width: 200px;
-        //background: red;
-        //border: 10px solid green;
-    }
-    div:last-child {
-        margin-bottom: 101vh; // this is a nasty hack to get around the last focus issue
-    }
-
-}
-
-#monumentTitle {
-    position: absolute;
-    top: 100px;
-    left: 100px;
-    color: #ccc;
-        font-family: Rosario;
-
-    span:first-child {
-        color: #333;
-        font-size: 0.9em;
-    }
-    span:last-child {
-        color: #fff;
-    }
-}
-
-// handle visible/hidden transition
-.showHide {
-    opacity: 1;
-    transition: .5s all;
-
-    &.hidden {
-        opacity: 0;
-    }
-}
-
-#signUp {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    /* bring your own prefixes */
-    transform: translate(-50%, -50%);
-
-    color: #fff;
-    z-index: 2;
-
-}
-
-.button {
-    color: #fff;
-    border: 4px solid #fff;
-    border-radius: 50px;
-    padding: 0.8em 1em;
-    text-decoration: none;
-    background: rgba(0,0,0,0.5);
-    text-align: center;
-    font-weight: bold;
-    display: inline-block;
-}
-
-#controls {
-    position: absolute;
-    z-index: 3;
-    top: 10px;
-    right: 10px;
-}
+//.scroller {
+//    z-index: 1
+//}
+//
+//.camera-circle {
+//    /* a huge area for the camera to circle around the monument */
+//    /*height: 100vh;*/
+//    margin: 200vh;
+//    height: 100vh;
+//}
+//
+//.measurements {
+//    display: flex;
+//    justify-content: space-between;
+//    position: absolute;
+//    bottom: 80px;
+//    left: 80px;
+//    right: 80px;
+//    color: #fff;
+//
+//    .measurement {
+//        text-align: right;
+//
+//        h4, h5, h6 {
+//            margin: 0;
+//        }
+//        h4 {
+//            font-size: 48px;
+//            line-height: 56px;
+//            text-shadow: 0 0 10px #000;
+//        }
+//        .label {
+//            display: flex;
+//            justify-content: space-between;
+//            flex-direction: row-reverse;
+//
+//            h5 {
+//                font-size: 18px;
+//            }
+//            h6 {
+//                font-size: 18px;
+//                margin-left: 1em;
+//                color: #8A8A8A;
+//            }
+//        }
+//
+//        &#ratio h4:after {
+//            content: 'x';
+//        }
+//    }
+//}
+//
+//#year {
+//    position: absolute;
+//    top: 40px;
+//    left: 80px;
+//
+//    font-family: Rosario;
+//    font-size: 96px;
+//    text-align: right;
+//    color: #fff;
+//    margin: 0;
+//}
+//
+//.notes {
+//    position: absolute;
+//    top: 175px;
+//    left: 80px;
+//    width: 600px;
+//
+//    color: #fff;
+//    font-size: 18px;
+//    text-shadow: 0 0 10px #000;
+//    margin: 0;
+//}
+//
+//.scroller {
+//    position: fixed;
+//    top: 0;
+//    left: 0;
+//    right: 0;
+//    bottom: 0;
+//    overflow-y: auto;
+//
+//    div {
+//        //width: 200px;
+//        //background: red;
+//        //border: 10px solid green;
+//    }
+//    div:last-child {
+//        margin-bottom: 101vh; // this is a nasty hack to get around the last focus issue
+//    }
+//
+//}
+//
+//#monumentTitle {
+//    position: absolute;
+//    top: 100px;
+//    left: 100px;
+//    color: #ccc;
+//        font-family: Rosario;
+//
+//    span:first-child {
+//        color: #333;
+//        font-size: 0.9em;
+//    }
+//    span:last-child {
+//        color: #fff;
+//    }
+//}
+//
+//// handle visible/hidden transition
+//.showHide {
+//    opacity: 1;
+//    transition: .5s all;
+//
+//    &.hidden {
+//        opacity: 0;
+//    }
+//}
+//
+//#signUp {
+//    position: absolute;
+//    top: 50%;
+//    left: 50%;
+//    /* bring your own prefixes */
+//    transform: translate(-50%, -50%);
+//
+//    color: #fff;
+//    z-index: 2;
+//
+//}
+//
+//.button {
+//    color: #fff;
+//    border: 4px solid #fff;
+//    border-radius: 50px;
+//    padding: 0.8em 1em;
+//    text-decoration: none;
+//    background: rgba(0,0,0,0.5);
+//    text-align: center;
+//    font-weight: bold;
+//    display: inline-block;
+//}
+//
+//#controls {
+//    position: absolute;
+//    z-index: 3;
+//    top: 10px;
+//    right: 10px;
+//}
