@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import TWEEN from 'tween';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+import { VRButton } from 'three/examples/jsm/webxr/VRButton.js';
 import Monument from './monument.js';
 import Pillar from './pillar.js';
 import Scroller from './scroller.js'
@@ -61,7 +62,7 @@ let floorCube = new THREE.Mesh(floorGeometry, floorMaterial);
 floorCube.position.set(0,-2,0);
 //scene.add(floorCube);
 
-let scaleModifier = 12 // experimenting for a more dramatic effect
+let scaleModifier = 1 // experimenting for a more dramatic effect
 
 // generate a monument
 let monument = new Monument(0);
@@ -93,15 +94,11 @@ camera.lookAt(lookAt)
 // let scale = new ScaleGroupChildren(monumentGroup);
 // scale.animate(1);
 
-// looping animation method
-function animate() {
-    requestAnimationFrame(animate);
+// looping animation frame V2 - necessary for VR
+renderer.setAnimationLoop( function () {
+	renderer.render( scene, camera );
 
-    renderer.render( scene, camera );
-    //TWEEN.update();
-    //controls.update()
-}
-animate();
+} );
 
 //// animation helper functions
 //function setActivePillar(index) {
@@ -159,3 +156,10 @@ animate();
 
 // DEBUG VALUES
 //window.debug = {renderer, monument, scene, camera, monumentGroup, THREE, scroller}
+//
+
+
+// VR
+document.body.appendChild( VRButton.createButton( renderer ) );
+renderer.xr.enabled = true;
+
