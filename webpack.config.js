@@ -2,9 +2,13 @@ const path = require('path');
 
 module.exports = {
     entry: './js/code.js',
+    entry: {
+        'code': './js/code.js',
+        'code-v2': './js/code-v2.js',
+    },
     output: {
         path: path.resolve(__dirname, 'js', 'dist'),
-        filename: 'bundle.js'
+        filename: '[name].bundle.js'
     },
     module: {
         rules: [
@@ -34,5 +38,4 @@ module.exports = {
             }
         ]
     }
-};
-
+}
