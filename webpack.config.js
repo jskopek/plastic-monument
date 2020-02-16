@@ -18,6 +18,10 @@ module.exports = {
                 use: ['dsv-loader'] // or dsv-loader?delimiter=,
             },
             {
+                test: /\.dae$/, // load all .csv, .dsv, .tsv files with dsv-loader
+                use: ['file-loader'] // or dsv-loader?delimiter=,
+            },
+            {
                 test: /\.s[ac]ss$/i,
                 use: [
                     // Creates `style` nodes from JS strings
