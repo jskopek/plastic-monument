@@ -7,13 +7,14 @@ var fontObj = require('../fonts/helvetiker_regular.typeface.json')
 var NEAR = 1e-6, FAR = 1e27;
 var SCREEN_WIDTH = window.innerWidth;
 var SCREEN_HEIGHT = window.innerHeight;
-var screensplit = 1;
 var mouse = [ .5, .5 ];
-var zoompos = - 100, minzoomspeed = .015;
+var zoompos = - 100, minzoomspeed = .0015;
 var zoomspeed = minzoomspeed;
 
-var container;
-var objects = {};
+var container, object;
+
+var fontLoader = new THREE.FontLoader();
+const font = fontLoader.parse(fontObj);
 
 // Generate a number of text labels, from 1µm in size up to 100,000,000 light years
 // Try to use some descriptive real-world examples of objects at each scale
@@ -21,15 +22,7 @@ var objects = {};
 var labeldata = [
     { size: .01, scale: 0.0001, label: "microscopic (1µm)" }, // FIXME - triangulating text fails at this size, so we scale instead
     { size: .01, scale: 0.1, label: "minuscule (1mm)" },
-    { size: .01, scale: 1.0, label: "tiny (1cm)" },
-    { size: 1, scale: 1.0, label: "child-sized (1m)" },
-    { size: 10, scale: 1.0, label: "tree-sized (10m)" },
-    { size: 100, scale: 1.0, label: "building-sized (100m)" },
-    { size: 1000, scale: 1.0, label: "medium (1km)" },
-    { size: 10000, scale: 1.0, label: "city-sized (10km)" },
-    { size: 3400000, scale: 1.0, label: "moon-sized (3,400 Km)" },
-    { size: 12000000, scale: 1.0, label: "planet-sized (12,000 km)" },
-    { size: 1400000000, scale: 1.0, label: "sun-sized (1,400,000 km)" },
+    { size: .01, scale: 1.0, label: "tiny (1cm)" }
 ];
 
 init();
@@ -41,60 +34,37 @@ function init() {
     //stats = new Stats();
     //container.appendChild( stats.dom );
 
-    window.addEventListener( 'mousemove', onMouseMove, false );
+    // window.addEventListener( 'mousemove', onMouseMove, false );
     window.addEventListener( 'resize', onWindowResize, false );
-    window.addEventListener( 'wheel', onMouseWheel, false );
+    // window.addEventListener( 'wheel', onMouseWheel, false );
 
-    var loader = new THREE.FontLoader();
-    const font = loader.parse(fontObj);
 
-    var scene = initScene( font );
+    var scene = initScene();
 
-    // Initialize two copies of the same scene, one with normal z-buffer and one with logarithmic z-buffer
-    objects.normal = initView( scene, true );
-    // objects.logzbuf = initView( scene, 'logzbuf', true );
+    // Render scene into view
+    object = initView( scene, true );
 
     animate();
     updateRendererSizes();
 
 
-    var scrollable = document.querySelector('#container');
+    // var scrollable = document.querySelector('#container');
+    // scrollable.addEventListener('wheel', function (event) {
+    //     var deltaY = event.deltaY;
+    //     var contentHeight = scrollable.scrollHeight;
+    //     var visibleHeight = scrollable.offsetHeight;
+    //     var scrollTop = scrollable.scrollTop;
 
-    scrollable.addEventListener('wheel', function (event) {
-        var deltaY = event.deltaY;
-        var contentHeight = scrollable.scrollHeight;
-        var visibleHeight = scrollable.offsetHeight;
-        var scrollTop = scrollable.scrollTop;
-
-        if (scrollTop === 0 && deltaY < 0) {
-            event.preventDefault();
-        } else if (visibleHeight + scrollTop === contentHeight && deltaY > 0) {
-            event.preventDefault();
-        }
-    });
-
-}
-
-function initView( scene, logDepthBuf ) {
-
-    var framecontainer = document.getElementById( 'container' );
-    SCREEN_WIDTH = framecontainer.clientWidth;
-    SCREEN_HEIGHT = framecontainer.clientHeight;
-
-    var camera = new THREE.PerspectiveCamera( 50, screensplit * SCREEN_WIDTH / SCREEN_HEIGHT, NEAR, FAR );
-    scene.add( camera );
-
-    var renderer = new THREE.WebGLRenderer( { antialias: true, logarithmicDepthBuffer: logDepthBuf } );
-    renderer.setPixelRatio( window.devicePixelRatio );
-    renderer.setSize( SCREEN_WIDTH / 2, SCREEN_HEIGHT );
-    renderer.domElement.style.position = "relative";
-    framecontainer.appendChild( renderer.domElement );
-
-    return { container: framecontainer, renderer: renderer, scene: scene, camera: camera };
+    //     if (scrollTop === 0 && deltaY < 0) {
+    //         event.preventDefault();
+    //     } else if (visibleHeight + scrollTop === contentHeight && deltaY > 0) {
+    //         event.preventDefault();
+    //     }
+    // });
 
 }
 
-function initScene( font ) {
+function initScene() {
 
     var scene = new THREE.Scene();
 
@@ -107,7 +77,7 @@ function initScene( font ) {
     var materialargs = {
         color: 0xffffff,
         specular: 0x050505,
-        shininess: 50,
+        shininess: 70,
         emissive: 0x000000
     };
 
@@ -152,6 +122,25 @@ function initScene( font ) {
     return scene;
 
 }
+function initView( scene, logDepthBuf ) {
+
+    var framecontainer = document.getElementById( 'container' );
+    SCREEN_WIDTH = framecontainer.clientWidth;
+    SCREEN_HEIGHT = framecontainer.clientHeight;
+
+    var camera = new THREE.PerspectiveCamera( 50, SCREEN_WIDTH / SCREEN_HEIGHT, NEAR, FAR );
+    scene.add( camera );
+
+    var renderer = new THREE.WebGLRenderer( { antialias: true, logarithmicDepthBuffer: logDepthBuf } );
+    renderer.setPixelRatio( window.devicePixelRatio );
+    renderer.setSize( SCREEN_WIDTH, SCREEN_HEIGHT );
+    renderer.domElement.style.position = "relative";
+    framecontainer.appendChild( renderer.domElement );
+
+    return { container: framecontainer, renderer: renderer, scene: scene, camera: camera };
+
+}
+
 
 function updateRendererSizes() {
 
@@ -165,11 +154,11 @@ function updateRendererSizes() {
     SCREEN_HEIGHT = framecontainer.clientHeight;
 
 
-    objects.normal.renderer.setSize( screensplit * SCREEN_WIDTH, SCREEN_HEIGHT );
-    objects.normal.camera.aspect = screensplit * SCREEN_WIDTH / SCREEN_HEIGHT;
-    objects.normal.camera.updateProjectionMatrix();
-    objects.normal.camera.setViewOffset( SCREEN_WIDTH, SCREEN_HEIGHT, 0, 0, SCREEN_WIDTH * screensplit, SCREEN_HEIGHT );
-    // objects.normal.container.style.width = ( screensplit * 100 ) + '%';
+    object.renderer.setSize( SCREEN_WIDTH, SCREEN_HEIGHT );
+    object.camera.aspect = SCREEN_WIDTH / SCREEN_HEIGHT;
+    object.camera.updateProjectionMatrix();
+    object.camera.setViewOffset( SCREEN_WIDTH, SCREEN_HEIGHT, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT );
+    // object.container.style.width = ( screensplit * 100 ) + '%';
 
     // objects.logzbuf.renderer.setSize( screensplit_right * SCREEN_WIDTH, SCREEN_HEIGHT );
     // objects.logzbuf.camera.aspect = screensplit_right * SCREEN_WIDTH / SCREEN_HEIGHT;
@@ -190,7 +179,7 @@ function render() {
 
     // Put some limits on zooming
     var minzoom = labeldata[ 0 ].size * labeldata[ 0 ].scale * 1;
-    var maxzoom = labeldata[ labeldata.length - 1 ].size * labeldata[ labeldata.length - 1 ].scale * 100;
+    var maxzoom = labeldata[ labeldata.length - 1 ].size * labeldata[ labeldata.length - 1 ].scale * 10;
     var damping = ( Math.abs( zoomspeed ) > minzoomspeed ? .95 : 1.0 );
 
     // Zoom out faster the further out you go
@@ -207,19 +196,19 @@ function render() {
     zoompos += zoomspeed;
     zoomspeed *= damping;
 
-    objects.normal.camera.position.x = Math.sin( .5 * Math.PI * ( mouse[ 0 ] - .5 ) ) * zoom;
-    objects.normal.camera.position.y = Math.sin( .25 * Math.PI * ( mouse[ 1 ] - .5 ) ) * zoom;
-    objects.normal.camera.position.z = Math.cos( .5 * Math.PI * ( mouse[ 0 ] - .5 ) ) * zoom;
-    objects.normal.camera.lookAt( objects.normal.scene.position );
+    object.camera.position.x = Math.sin( .5 * Math.PI * ( mouse[ 0 ] - .5 ) ) * zoom;
+    object.camera.position.y = Math.sin( .25 * Math.PI * ( mouse[ 1 ] - .5 ) ) * zoom;
+    object.camera.position.z = Math.cos( .5 * Math.PI * ( mouse[ 0 ] - .5 ) ) * zoom;
+    object.camera.lookAt( object.scene.position );
 
     // Clone camera settings across both scenes
-    // objects.logzbuf.camera.position.copy( objects.normal.camera.position );
-    // objects.logzbuf.camera.quaternion.copy( objects.normal.camera.quaternion );
+    // objects.logzbuf.camera.position.copy( object.camera.position );
+    // objects.logzbuf.camera.quaternion.copy( object.camera.quaternion );
 
     // Update renderer sizes if the split has changed
     updateRendererSizes();
 
-    objects.normal.renderer.render( objects.normal.scene, objects.normal.camera );
+    object.renderer.render( object.scene, object.camera );
     // objects.logzbuf.renderer.render( objects.logzbuf.scene, objects.logzbuf.camera );
 
     //stats.update();
