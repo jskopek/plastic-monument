@@ -1,5 +1,6 @@
 var THREE = require('three');
 var fontObj = require('../fonts/helvetiker_regular.typeface.json')
+import { ColladaLoader } from 'three/examples/jsm/loaders/ColladaLoader.js';
 
 //import Stats from './jsm/libs/stats.module.js';
 
@@ -8,13 +9,15 @@ var NEAR = 1e-6, FAR = 1e27;
 var SCREEN_WIDTH = window.innerWidth;
 var SCREEN_HEIGHT = window.innerHeight;
 var mouse = [ .5, .5 ];
-var zoompos = - 100, minzoomspeed = .0015;
+var zoompos = - 100, minzoomspeed = .15;
 var zoomspeed = minzoomspeed;
 
 var container, object;
 
+// font loader
 var fontLoader = new THREE.FontLoader();
 const font = fontLoader.parse(fontObj);
+
 
 // Generate a number of text labels, from 1µm in size up to 100,000,000 light years
 // Try to use some descriptive real-world examples of objects at each scale
@@ -118,6 +121,30 @@ function initScene() {
         group.add( dotmesh );
 
     }
+
+    // load bottle
+    var loader = new ColladaLoader();
+    loader.load('/models/collada/bottlecap.dae', function (collada) {
+        var scale = 3
+        var size = .01
+
+
+        materialargs.color = new THREE.Color().setHSL( Math.random(), 0.5, 0.5 );
+
+        var material = new THREE.MeshPhongMaterial( materialargs );
+
+        var group = new THREE.Group();
+        group.position.z = - size * scale;
+        scene.add( group );
+
+        // var dotmesh = new THREE.Mesh( geometry, material );
+        var dotmesh = collada.scene;
+        dotmesh.scale.set(size, size, size);
+        dotmesh.position.y = - size / 4 * size;
+        dotmesh.scale.multiplyScalar( size * scale );
+        group.add( dotmesh );
+
+    });
 
     return scene;
 
