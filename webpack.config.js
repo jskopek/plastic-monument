@@ -5,6 +5,7 @@ module.exports = {
     entry: {
         'code': './js/code.js',
         'code-v2': './js/code-v2.js',
+        'microplastic': './js/microplastic.js',
     },
     output: {
         path: path.resolve(__dirname, 'js', 'dist'),
