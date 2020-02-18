@@ -33,7 +33,7 @@ camera.position.z = -10;
 camera.lookAt(lookAt)
 
 //// initialize orbital rotation
-let controls = new OrbitControls(camera);
+let controls = new OrbitControls(camera, containerEl);
 controls.autoRotate = false;
 controls.enableZoom = false;
 //camera.zoom = 20;
