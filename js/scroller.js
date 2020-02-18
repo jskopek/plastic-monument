@@ -9,12 +9,18 @@ class Scroller {
 
         this.ignoreScroll = false // HACK - DISABLE IntersectionObserver ON MANUAL SCROLL
     }
-    add(id, vHeight=1) {
+    add(id, vHeight=1, addLabel) {
         this.items.push(id)
 
         var itemEl = document.createElement('div')
         itemEl.style.height = `${parseInt(vHeight * 100)}vh`;
         this.el.appendChild(itemEl);
+
+        if(addLabel) {
+            var labelEl = document.createElement('label');
+            labelEl.innerText = id;
+            itemEl.appendChild(labelEl);
+        }
 
 
 

@@ -10,6 +10,12 @@ require('../css/main.scss')
 // import ScaleGroupChildren from './scalegroupchildren.js';
 
 
+var scroller = new Scroller(document.getElementById('scroller'));
+pillarData.forEach((pillarRow) => { scroller.add(pillarRow.year, 0.05, true); })
+scroller.on('scroll', (year, index) => {
+    setActivePillar(index);
+});
+
 // initialize renderer
 let renderer = new THREE.WebGLRenderer();
 renderer.setPixelRatio( window.devicePixelRatio );
@@ -64,15 +70,6 @@ floorCube.position.set(0,-2,0);
 let monument = new Monument(0);
 pillarData.forEach((pillarRow) => {
     monument.addPillar(pillarRow.humanMass, pillarRow.plasticMass, pillarRow.year, pillarRow.notes)
-});
-
-pillarData.forEach((pillarRow) => {
-    let yearEl = document.createElement('div');
-    yearEl.innerHTML = `<h2>${pillarRow.year}</h2>
-    <h3><span class="text-primary">${pillarRow.humanMass}</span> Human Mass (Thousand Tonnes)</h3>
-    <h3><span class="text-primary">${pillarRow.plasticMass}</span> Plastic Mass (Thousand Tonnes)</h3>
-    `;
-    document.querySelector('.history').appendChild(yearEl);
 });
 
 let monumentGroup = monument.render()
