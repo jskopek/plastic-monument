@@ -3,13 +3,10 @@ const path = require('path');
 module.exports = {
     entry: './js/code.js',
     entry: {
-        'code': './js/code.js',
-        'code-v2': './js/code-v2.js',
         'scene-2': './js/scene-2.js',
         'microplastic': './js/microplastic.js',
         'microplastic-v2': './js/microplastic-v2.js',
         'load-objects': './js/load-objects.js',
-        'future': './js/future.js',
     },
     output: {
         path: path.resolve(__dirname, 'js', 'dist'),

@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 const _ = require('lodash')
-require('../css/main.scss')
+require('../main.scss')
 
 // initialize renderer
 let renderer = new THREE.WebGLRenderer();
@@ -34,7 +34,7 @@ controls.panSpeed = 2
 // load scene
 var scene = undefined
 var loader = new THREE.ObjectLoader();
-loader.load("/js/scene-2.json", (obj) => {
+loader.load("./js/scene-2.json", (obj) => {
     scene = obj;
     initializeScene();
     animate();
