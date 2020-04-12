@@ -5,6 +5,7 @@ module.exports = {
     entry: {
         'code': './js/code.js',
         'code-v2': './js/code-v2.js',
+        'scene-2': './js/scene-2.js',
         'microplastic': './js/microplastic.js',
         'microplastic-v2': './js/microplastic-v2.js',
         'load-objects': './js/load-objects.js',

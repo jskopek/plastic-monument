@@ -1,0 +1,171 @@
+{
+	"metadata": {
+		"version": 4.5,
+		"type": "Object",
+		"generator": "Object3D.toJSON"
+	},
+	"geometries": [
+		{
+			"uuid": "52EA1A92-3185-4C1E-A330-93E338791659",
+			"type": "BoxGeometry",
+			"width": 23,
+			"height": 1,
+			"depth": 46,
+			"widthSegments": 0,
+			"heightSegments": 0,
+			"depthSegments": 0
+		},
+		{
+			"uuid": "8B929C98-FF69-415E-810C-437BB4716F0E",
+			"type": "BoxGeometry",
+			"width": 1,
+			"height": 1,
+			"depth": 1
+		},
+		{
+			"uuid": "D96F828C-E289-45CD-8F04-C8AC61B629F7",
+			"type": "IcosahedronGeometry",
+			"radius": 100,
+			"detail": 2
+		}],
+	"materials": [
+		{
+			"uuid": "2399D6DA-E63E-4649-85FD-B11E8AC1B7BD",
+			"type": "MeshStandardMaterial",
+			"color": 1644825,
+			"roughness": 0.75,
+			"metalness": 0.5,
+			"emissive": 0,
+			"depthFunc": 3,
+			"depthTest": true,
+			"depthWrite": true,
+			"stencilWrite": false,
+			"stencilWriteMask": 255,
+			"stencilFunc": 519,
+			"stencilRef": 0,
+			"stencilFuncMask": 255,
+			"stencilFail": 7680,
+			"stencilZFail": 7680,
+			"stencilZPass": 7680
+		},
+		{
+			"uuid": "84A3D14A-EFAF-4082-937E-09BD76BE61CD",
+			"type": "MeshStandardMaterial",
+			"color": 16777215,
+			"roughness": 1,
+			"metalness": 0.5,
+			"emissive": 0,
+			"depthFunc": 3,
+			"depthTest": true,
+			"depthWrite": true,
+			"stencilWrite": false,
+			"stencilWriteMask": 255,
+			"stencilFunc": 519,
+			"stencilRef": 0,
+			"stencilFuncMask": 255,
+			"stencilFail": 7680,
+			"stencilZFail": 7680,
+			"stencilZPass": 7680
+		},
+		{
+			"uuid": "2A3CFB91-9D08-4920-80F5-5D9D889A7132",
+			"type": "MeshStandardMaterial",
+			"color": 1250067,
+			"roughness": 1,
+			"metalness": 0.5,
+			"emissive": 0,
+			"side": 1,
+			"depthFunc": 3,
+			"depthTest": true,
+			"depthWrite": true,
+			"stencilWrite": false,
+			"stencilWriteMask": 255,
+			"stencilFunc": 519,
+			"stencilRef": 0,
+			"stencilFuncMask": 255,
+			"stencilFail": 7680,
+			"stencilZFail": 7680,
+			"stencilZPass": 7680
+		}],
+	"object": {
+		"uuid": "449AB29E-5281-4B62-9771-2E6E57D32494",
+		"type": "Scene",
+		"name": "Scene",
+		"layers": 1,
+		"matrix": [1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1],
+		"children": [
+			{
+				"uuid": "7450CF9C-B4C0-46CC-89B8-964AFB6D307B",
+				"type": "Mesh",
+				"name": "Base",
+				"layers": 1,
+				"matrix": [1,0,0,0,0,1,0,0,0,0,1,0,0,-0.5,0,1],
+				"geometry": "52EA1A92-3185-4C1E-A330-93E338791659",
+				"material": "2399D6DA-E63E-4649-85FD-B11E8AC1B7BD"
+			},
+			{
+				"uuid": "19879BE6-F8D2-4B08-B9A6-C3794F416177",
+				"type": "Mesh",
+				"name": "Box",
+				"layers": 1,
+				"matrix": [1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1],
+				"geometry": "8B929C98-FF69-415E-810C-437BB4716F0E",
+				"material": "84A3D14A-EFAF-4082-937E-09BD76BE61CD"
+			},
+			{
+				"uuid": "3425EA99-B2C3-4FAD-9F0E-D5A7A4B9A9D6",
+				"type": "Mesh",
+				"name": "Icosahedron",
+				"layers": 1,
+				"matrix": [1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1],
+				"geometry": "D96F828C-E289-45CD-8F04-C8AC61B629F7",
+				"material": "2A3CFB91-9D08-4920-80F5-5D9D889A7132"
+			},
+			{
+				"uuid": "B20F1226-5722-4C37-AB9D-31952BE058D8",
+				"type": "DirectionalLight",
+				"name": "DirectionalLight 1",
+				"layers": 1,
+				"matrix": [1,0,0,0,0,1,0,0,0,0,1,0,-5,5,7.5,1],
+				"color": 16269311,
+				"intensity": 2,
+				"shadow": {
+					"camera": {
+						"uuid": "D5D5A4C9-16F3-4237-84FF-111CC1CDBDCA",
+						"type": "OrthographicCamera",
+						"layers": 1,
+						"zoom": 1,
+						"left": -5,
+						"right": 5,
+						"top": 5,
+						"bottom": -5,
+						"near": 0.5,
+						"far": 500
+					}
+				}
+			},
+			{
+				"uuid": "474278D4-0F52-411E-821E-34FB3EE1EF7E",
+				"type": "DirectionalLight",
+				"name": "DirectionalLight 2",
+				"layers": 1,
+				"matrix": [1,0,0,0,0,1,0,0,0,0,1,0,5,7.5,-7.5,1],
+				"color": 6014715,
+				"intensity": 2.5,
+				"shadow": {
+					"camera": {
+						"uuid": "8A9ADF49-B7E8-4609-91A6-6D283A1A963C",
+						"type": "OrthographicCamera",
+						"layers": 1,
+						"zoom": 1,
+						"left": -5,
+						"right": 5,
+						"top": 5,
+						"bottom": -5,
+						"near": 0.5,
+						"far": 500
+					}
+				}
+			}]
+	}
+}
