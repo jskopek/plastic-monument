@@ -1,44 +1,44 @@
 @import "./bootstrap-4.3/bootstrap";
 
 
-body { 
-    margin: 0; 
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: normal;
-}
-canvas { width: 100%; height: 100% }
+// body { 
+//     margin: 0; 
+//     font-family: Roboto;
+//     font-style: normal;
+//     font-weight: normal;
+// }
+// canvas { width: 100%; height: 100% }
 
-/*
-#text {
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    overflow-y: auto;
+// /*
+// #text {
+//     position: fixed;
+//     top: 0;
+//     left: 0;
+//     bottom: 0;
+//     width: 100%;
+//     overflow-y: auto;
 
-    color: #fff;
-    background: radial-gradient(circle at 100%, #0000, #0000 50%, #000 75%, #000 75%);
-}
-*/
+//     color: #fff;
+//     background: radial-gradient(circle at 100%, #0000, #0000 50%, #000 75%, #000 75%);
+// }
+// */
 
-#monument {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    z-index: -1;
-}
-.cover {
-    height: 100vh;
-    position: relative;
-    h1 {
-        position: absolute;
-        bottom: 10vh;
-    }
-}
+// #monument {
+//     position: fixed;
+//     width: 100%;
+//     height: 100%;
+//     top: 0;
+//     left: 0;
+//     z-index: -1;
+// }
+// .cover {
+//     height: 100vh;
+//     position: relative;
+//     h1 {
+//         position: absolute;
+//         bottom: 10vh;
+//     }
+// }
 
 //.scroller {
 //    z-index: 1
@@ -192,9 +192,15 @@ canvas { width: 100%; height: 100% }
 //    right: 10px;
 //}
 
+body {
+}
 
-#scroller {
+#year-scroller {
     margin-bottom: 101vh; // make sure all elements of scroller can go off screen and be selected
+    z-index: 2;
+    position: relative;
+}
+.scroller {
     div  {
         display: flex;
         align-items: center;
@@ -204,5 +210,44 @@ canvas { width: 100%; height: 100% }
             margin-left: auto;
             margin-right: 2em;
         }
+    }
+}
+
+
+#monument,
+#timeline-container {
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    height: 100%;
+}
+#monument {
+    left: 0;
+    width: 100vw;
+    background: #000;
+}
+#timeline-container {
+    left: 15px;
+    display: flex;
+    align-items: center;
+    z-index: 3;
+    div label {
+        transition: .8s;
+    }
+
+    div:hover label {
+        // color: red !important;
+        cursor: pointer;
+    }
+    div[data-active-distance="0"] label {
+        border-bottom: 1px solid #fff;
+        font-weight: bold;
+    }
+    @for $i from -3 through 3 {
+        div[data-active-distance="#{$i}"] label {
+            color: mix(#949da5, #fff, abs($i) * 30%);
+            transform: translateX(abs(abs($i) - 3) * 6px);
+        }
+
     }
 }

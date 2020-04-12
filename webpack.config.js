@@ -9,6 +9,7 @@ module.exports = {
         'microplastic': './js/microplastic.js',
         'microplastic-v2': './js/microplastic-v2.js',
         'load-objects': './js/load-objects.js',
+        'future': './js/future.js',
     },
     output: {
         path: path.resolve(__dirname, 'js', 'dist'),

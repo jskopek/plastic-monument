@@ -1,0 +1,12 @@
+.wp-block-button__link {
+    transition: .2s all;
+    &.active {
+        background-color: #278d12;
+        color: #fff !important;
+    }
+}
+// canvas {
+//     background-color: #fff;
+//     position: fixed;
+//     bottom: 0;
+// }
