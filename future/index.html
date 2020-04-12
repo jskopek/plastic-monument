@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Plastic Monument</title>
+        <link rel="icon" href="favicon.png">
+        <link rel="apple-touch-icon" href="favicon.png">
+        <link href="https://fonts.googleapis.com/css?family=Roboto|Rosario&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous" />
+        <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+	</head>
+	<body class="bg-dark text-light">
+        <canvas id="chart"></canvas>
+        wtf
+
+        <div class="page-content">
+            <h3>Plastic will never go away, and it never should. Plastic can do so much good for this world.</h3>
+            <p>Left unchecked, the world is going to drown in plastic. The amount of plastic on earth is expected to be <strong>4X</strong> higher than it is today by the year 2050. If you think the problem is bad now, imagine what it could be like in 30 years!</p>
+            
+            <figure class="wp-block-image size-large"><img alt="" data-srcset="https://825744.smushcdn.com/1643124/wp-content/uploads/2020/03/Global_plastic-packaging-projections_2050cZeroWasteLivingLab-by-enviu.jpg?size=160x143&amp;lossy=1&amp;strip=1&amp;webp=1 160w, https://825744.smushcdn.com/1643124/wp-content/uploads/2020/03/Global_plastic-packaging-projections_2050cZeroWasteLivingLab-by-enviu-300x269.jpg?lossy=1&amp;strip=1&amp;webp=1 300w, https://825744.smushcdn.com/1643124/wp-content/uploads/2020/03/Global_plastic-packaging-projections_2050cZeroWasteLivingLab-by-enviu.jpg?size=480x430&amp;lossy=1&amp;strip=1&amp;webp=1 480w, https://825744.smushcdn.com/1643124/wp-content/uploads/2020/03/Global_plastic-packaging-projections_2050cZeroWasteLivingLab-by-enviu.jpg?size=640x574&amp;lossy=1&amp;strip=1&amp;webp=1 640w, https://825744.smushcdn.com/1643124/wp-content/uploads/2020/03/Global_plastic-packaging-projections_2050cZeroWasteLivingLab-by-enviu-768x688.jpg?lossy=1&amp;strip=1&amp;webp=1 768w, https://825744.smushcdn.com/1643124/wp-content/uploads/2020/03/Global_plastic-packaging-projections_2050cZeroWasteLivingLab-by-enviu-1024x918.jpg?lossy=1&amp;strip=1&amp;webp=1 1024w, https://825744.smushcdn.com/1643124/wp-content/uploads/2020/03/Global_plastic-packaging-projections_2050cZeroWasteLivingLab-by-enviu-1536x1376.jpg?lossy=1&amp;strip=1&amp;webp=1 1536w, https://825744.smushcdn.com/1643124/wp-content/uploads/2020/03/Global_plastic-packaging-projections_2050cZeroWasteLivingLab-by-enviu.jpg?lossy=1&amp;strip=1&amp;webp=1 2000w" sizes="(max-width: 800px) 100vw, 800px" data-src="https://825744.smushcdn.com/1643124/wp-content/uploads/2020/03/Global_plastic-packaging-projections_2050cZeroWasteLivingLab-by-enviu-1024x918.jpg?lossy=1&amp;strip=1&amp;webp=1" class="wp-image-585 ls-is-cached lazyloaded" src="https://825744.smushcdn.com/1643124/wp-content/uploads/2020/03/Global_plastic-packaging-projections_2050cZeroWasteLivingLab-by-enviu-1024x918.jpg?lossy=1&amp;strip=1&amp;webp=1" loading="lazy" srcset="https://825744.smushcdn.com/1643124/wp-content/uploads/2020/03/Global_plastic-packaging-projections_2050cZeroWasteLivingLab-by-enviu.jpg?size=160x143&amp;lossy=1&amp;strip=1&amp;webp=1 160w, https://825744.smushcdn.com/1643124/wp-content/uploads/2020/03/Global_plastic-packaging-projections_2050cZeroWasteLivingLab-by-enviu-300x269.jpg?lossy=1&amp;strip=1&amp;webp=1 300w, https://825744.smushcdn.com/1643124/wp-content/uploads/2020/03/Global_plastic-packaging-projections_2050cZeroWasteLivingLab-by-enviu.jpg?size=480x430&amp;lossy=1&amp;strip=1&amp;webp=1 480w, https://825744.smushcdn.com/1643124/wp-content/uploads/2020/03/Global_plastic-packaging-projections_2050cZeroWasteLivingLab-by-enviu.jpg?size=640x574&amp;lossy=1&amp;strip=1&amp;webp=1 640w, https://825744.smushcdn.com/1643124/wp-content/uploads/2020/03/Global_plastic-packaging-projections_2050cZeroWasteLivingLab-by-enviu-768x688.jpg?lossy=1&amp;strip=1&amp;webp=1 768w, https://825744.smushcdn.com/1643124/wp-content/uploads/2020/03/Global_plastic-packaging-projections_2050cZeroWasteLivingLab-by-enviu-1024x918.jpg?lossy=1&amp;strip=1&amp;webp=1 1024w, https://825744.smushcdn.com/1643124/wp-content/uploads/2020/03/Global_plastic-packaging-projections_2050cZeroWasteLivingLab-by-enviu-1536x1376.jpg?lossy=1&amp;strip=1&amp;webp=1 1536w, https://825744.smushcdn.com/1643124/wp-content/uploads/2020/03/Global_plastic-packaging-projections_2050cZeroWasteLivingLab-by-enviu.jpg?lossy=1&amp;strip=1&amp;webp=1 2000w"><noscript><img src="https://825744.smushcdn.com/1643124/wp-content/uploads/2020/03/Global_plastic-packaging-projections_2050cZeroWasteLivingLab-by-enviu-1024x918.jpg?lossy=1&strip=1&webp=1" alt="" class="wp-image-585" srcset="https://825744.smushcdn.com/1643124/wp-content/uploads/2020/03/Global_plastic-packaging-projections_2050cZeroWasteLivingLab-by-enviu.jpg?size=160x143&amp;lossy=1&amp;strip=1&amp;webp=1 160w, https://825744.smushcdn.com/1643124/wp-content/uploads/2020/03/Global_plastic-packaging-projections_2050cZeroWasteLivingLab-by-enviu-300x269.jpg?lossy=1&amp;strip=1&amp;webp=1 300w, https://825744.smushcdn.com/1643124/wp-content/uploads/2020/03/Global_plastic-packaging-projections_2050cZeroWasteLivingLab-by-enviu.jpg?size=480x430&amp;lossy=1&amp;strip=1&amp;webp=1 480w, https://825744.smushcdn.com/1643124/wp-content/uploads/2020/03/Global_plastic-packaging-projections_2050cZeroWasteLivingLab-by-enviu.jpg?size=640x574&amp;lossy=1&amp;strip=1&amp;webp=1 640w, https://825744.smushcdn.com/1643124/wp-content/uploads/2020/03/Global_plastic-packaging-projections_2050cZeroWasteLivingLab-by-enviu-768x688.jpg?lossy=1&amp;strip=1&amp;webp=1 768w, https://825744.smushcdn.com/1643124/wp-content/uploads/2020/03/Global_plastic-packaging-projections_2050cZeroWasteLivingLab-by-enviu-1024x918.jpg?lossy=1&amp;strip=1&amp;webp=1 1024w, https://825744.smushcdn.com/1643124/wp-content/uploads/2020/03/Global_plastic-packaging-projections_2050cZeroWasteLivingLab-by-enviu-1536x1376.jpg?lossy=1&amp;strip=1&amp;webp=1 1536w, https://825744.smushcdn.com/1643124/wp-content/uploads/2020/03/Global_plastic-packaging-projections_2050cZeroWasteLivingLab-by-enviu.jpg?lossy=1&amp;strip=1&amp;webp=1 2000w" sizes="(max-width: 800px) 100vw, 800px" /></noscript><figcaption>Source: <a href="https://www.greenpeace.org/usa/myths-about-ending-plastic-pollution/global_plastic-packaging-projections_2050czerowastelivinglab-by-enviu/">Greenpeace</a></figcaption></figure>
+            
+            <h3>Our problem is that we aren’t in control of our plastic addiction, and it’s killing us and our environment.</h3>
+            <p>Thankfully, there is a lot we can do to tackle the problem, however – at the government, industrial, and <a href="https://plastic.empathy.works/2020/03/28/what-we-can-do-to-slow-the-growth-in-single-use-plastic/">individual</a> levels. There is no silver bullet to solve the problem of rampant plastic pollution, but by combining a number of steps we can tackle the problem. </p>
+            <p>The timeline below shows some of the potential solutions to reducing plastic waste. As you scroll down them, you can choose whether the world implements them or doesn’t. What happens to the growth in plastic as you do*?</p>
+
+
+
+
+            <h3>Our problem is that we aren&#8217;t in control of our plastic addiction, and it&#8217;s killing us and our environment.</h3>
+
+
+
+            <p>Thankfully, there is a lot we can do to tackle the problem, however &#8211; at the government, industrial, and <a href="https://plastic.empathy.works/2020/03/28/what-we-can-do-to-slow-the-growth-in-single-use-plastic/">individual</a> levels. There is no silver bullet to solve the problem of rampant plastic pollution, but by combining a number of steps we can tackle the problem. </p>
+            
+            
+            
+            <p>The timeline below shows some of the potential solutions to reducing plastic waste. As you scroll down them, you can choose whether the world implements them or doesn&#8217;t. What happens to the growth in plastic as you do*?</p>
+            
+            
+            
+            <h2>2021</h2>
+            
+            
+            
+            <p>A ban on single-use plastics is implemented in much of North America. The ban reduces pollution from single-use plastic products and packaging – such as shopping bags, straws, cutlery, plates, and stir sticks</p>
+            
+            
+            
+            <div class="wp-block-buttons aligncenter">
+            <div class="wp-block-button is-style-outline"><a class="wp-block-button__link has-text-color has-very-dark-gray-color" rel="{&quot;year&quot;:2021,&quot;modifier&quot;:-0.01}">Plastic consumption is reduced by 1% per person for 500 million people</a></div>
+            </div>
+            
+            
+            
+            <h2>2022</h2>
+            
+            
+            
+            <p>The ban on single-use plastic&nbsp;<a href="https://www.bbc.com/news/world-asia-china-51171491">extends throughout China</a>.</p>
+            
+            
+            
+            <div class="wp-block-buttons aligncenter">
+            <div class="wp-block-button is-style-outline"><a class="wp-block-button__link has-text-color has-very-dark-gray-color" rel="{&quot;year&quot;:2022,&quot;modifier&quot;:-0.01}">Plastic consumption is reduced by 1% for another 1.5 billion people.</a></div>
+            </div>
+            
+            
+            
+            <h2>2023</h2>
+            
+            
+            
+            <p>290 companies who signed the ‘New Plastics Economy Global Commitment’ in 2018 achieve reuse, recycling or composting of 100% of packaging sold worldwide.</p>
+            
+            
+            
+            <div class="wp-block-buttons aligncenter">
+            <div class="wp-block-button is-style-outline"><a class="wp-block-button__link has-text-color has-very-dark-gray-color" rel="{&quot;year&quot;:2023,&quot;modifier&quot;:-0.05}">Plastic consumption is reduced by 5% for the entire world.</a></div>
+            </div>
+            
+            
+            
+            <h2>2029</h2>
+            
+            
+            
+            <p>Massive expansion of mechanical recycling capacity results in a growth of recycling from 12% to 20%&nbsp;<a href="https://www.mckinsey.com/industries/chemicals/our-insights/how-plastics-waste-recycling-could-transform-the-chemical-industry">[1]</a></p>
+            
+            
+            
+            <div class="wp-block-buttons aligncenter">
+            <div class="wp-block-button is-style-outline"><a class="wp-block-button__link has-text-color has-very-dark-gray-color" rel="{&quot;year&quot;:2029,&quot;modifier&quot;:-0.08}">Plastic consumption is reduced by 8% for the entire world.</a></div>
+            </div>
+            
+            
+            
+            <h2>2030</h2>
+            
+            
+            
+            <p>Advances in new technologies for plastic recyling are widely adopted, including monomer recycling and reprocessing of plastic.</p>
+            
+            
+            
+            <div class="wp-block-buttons aligncenter">
+            <div class="wp-block-button is-style-outline"><a class="wp-block-button__link has-text-color has-very-dark-gray-color" rel="{&quot;year&quot;:2030,&quot;modifier&quot;:-0.05}">Plastic consumption is reduced by 5% for the entire world.</a></div>
+            </div>
+            
+            
+            
+            <h2>2031</h2>
+            
+            
+            
+            <p>New advances in farming allow fresh produce to be delivered directly from the farm to consumers, and compost is returned to farms for reuse.</p>
+            
+            
+            
+            <div class="wp-block-buttons aligncenter">
+            <div class="wp-block-button is-style-outline"><a class="wp-block-button__link has-text-color has-very-dark-gray-color" rel="{&quot;year&quot;:2031,&quot;modifier&quot;:-0.05}">Plastic consumption is reduced by 5% per year.</a></div>
+            </div>
+            
+            
+            
+            <h2>2032</h2>
+            
+            
+            
+            <p>Nearly all products are purchased online and delivered via drones and self-driving vehicles. New regulations are put in place to ban plastic wrap outside of boxes.</p>
+            
+            
+            
+            <div class="wp-block-buttons aligncenter">
+            <div class="wp-block-button is-style-outline"><a class="wp-block-button__link has-text-color has-very-dark-gray-color" rel="{&quot;year&quot;:2032,&quot;modifier&quot;:-0.01}">Plastic consumption is reduced by 1% per year.</a></div>
+            </div>
+            
+            
+            
+            <h2>2033</h2>
+            
+            
+            
+            <p>Mycelium gains widespread adoption in packaging and product design.</p>
+            
+            
+            
+            <div class="wp-block-buttons aligncenter">
+            <div class="wp-block-button is-style-outline"><a class="wp-block-button__link has-text-color has-very-dark-gray-color" rel="{&quot;year&quot;:2033,&quot;modifier&quot;:-0.02}">Plastic consumption decreased by 2% worldwide.</a></div>
+            </div>
+            
+            
+            
+            <h2>2035</h2>
+            
+            
+            
+            <p>Soft-shell plastic is banned from all non-medical usage</p>
+            
+            
+            
+            <div class="wp-block-buttons aligncenter">
+            <div class="wp-block-button is-style-outline"><a class="wp-block-button__link has-text-color has-very-dark-gray-color" rel="{&quot;year&quot;:2035,&quot;modifier&quot;:-0.03}">Plastic consumption decreased by 3% worldwide.</a></div>
+            </div>
+            
+            
+            
+            <p><em>Please note: it’s really hard to estimate exactly when these technologies and policies will come into effect, and what will happen if they do. Whenever possible we’ve tried to link to additional articles or resources to back up our estimates, but these numbers are ultimately just estimates. Hopefully they give you a rough idea of what can be done!</em></p>
+
+        </div>
+            
+
+        <script src="dist/future.bundle.js"></script>
+        <script type="text/javascript">
+            predictor.generateChart(document.getElementById('chart'))
+            document.querySelectorAll('.wp-block-button__link').forEach((btnEl) => {
+                btnEl.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    var btnData = JSON.parse(btnEl.rel)
+                    var isActive = btnEl.classList.toggle('active');
+                    if(isActive) {
+                        window.predictor.add(btnData.year, btnData.modifier);
+                    } else {
+                        window.predictor.remove(btnData.year, btnData.modifier);
+                    }
+
+                    // var toggleFn = isActive ? window.predictor.add : window.predictor.remove;
+                    // toggleFn(btnData.year, btnData.modifier)
+                })
+            })
+        </script>
+	</body>
+</html>
