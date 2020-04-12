@@ -1,0 +1,52 @@
+body {
+    font-family: sans-serif;
+    background-color: #fff;
+    color: #000;
+    margin: 0px;
+    font-size: 1.4em;
+    // overflow: hidden;
+}
+#year-scroller, #timeline-container {
+    display: none;
+    //margin-bottom: 101vh; // make sure all elements of scroller can go off screen and be selected
+}
+// .title-wrapper {
+//     display: flex;
+//     height: 100vh;
+//     align-items: center;
+// }
+.content {
+    position: relative;
+    max-width: 400px;
+    margin: 0 auto;
+    background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.5) 5%, rgba(255,255,255,0.5) 95%, rgba(255,255,255,0) 100%);
+}
+.scroller {
+    > div  {
+        display: flex;
+        align-items: center;
+
+        label {
+            color: #949da5;
+            margin-left: auto;
+            margin-right: 2em;
+        }
+    }
+}
+
+#scene,
+#scene-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+#scene-overlay {
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    background-color: rgba(0,0,0,0.5);
+}
+// .dg.ac {
+//     z-index: 3;
+// }
