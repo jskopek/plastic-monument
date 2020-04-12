@@ -22,8 +22,6 @@ class Scroller {
             itemEl.appendChild(labelEl);
         }
 
-
-
         let observer = new IntersectionObserver((entries) => {
             if(this.ignoreScroll) { return; } // HACK - DISABLE IntersectionObserver ON MANUAL SCROLL
             if(entries[0].boundingClientRect.y <= 0) {
@@ -33,6 +31,9 @@ class Scroller {
         })
         observer.observe(itemEl);
 
+        itemEl.addEventListener('click', (e) => {
+            this.events.emit('click', id, this.index);
+        });
     }
     on(eventName, callback) { this.events.on(eventName, callback) }
 
@@ -44,6 +45,9 @@ class Scroller {
         this.events.emit('scroll', this.items[this.index], this.index)
 
         setTimeout(() => { this.ignoreScroll = false; }, 1000); // HACK - DISABLE IntersectionObserver ON MANUAL SCROLL
+    }
+    indexOfId(id) {
+        return this.items.indexOf(id);
     }
     scrollNext() {
         if(this.canScrollNext()) {
