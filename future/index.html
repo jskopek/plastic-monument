@@ -1,176 +1,302 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<title>Plastic Monument</title>
-        <link rel="icon" href="favicon.png">
-        <link rel="apple-touch-icon" href="favicon.png">
-        <link href="https://fonts.googleapis.com/css?family=Roboto|Rosario&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous" />
-        <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-	</head>
-	<body class="bg-dark text-light">
-        <canvas id="chart"></canvas>
-        wtf
+<!doctype html>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+	<title>What will the future look like? &#8211; Plastic Monument</title>
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel='dns-prefetch' href='//825744.smushcdn.com' />
+<link rel="alternate" type="application/rss+xml" title="Plastic Monument &raquo; Feed" href="https://plastic.empathy.works/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Plastic Monument &raquo; Comments Feed" href="https://plastic.empathy.works/comments/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/plastic.empathy.works\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.4"}};
+			/*! This file is auto-generated */
+			!function(e,a,t){var r,n,o,i,p=a.createElement("canvas"),s=p.getContext&&p.getContext("2d");function c(e,t){var a=String.fromCharCode;s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,e),0,0);var r=p.toDataURL();return s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,t),0,0),r===p.toDataURL()}function l(e){if(!s||!s.fillText)return!1;switch(s.textBaseline="top",s.font="600 32px Arial",e){case"flag":return!c([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])&&(!c([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!c([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]));case"emoji":return!c([55357,56424,55356,57342,8205,55358,56605,8205,55357,56424,55356,57340],[55357,56424,55356,57342,8203,55358,56605,8203,55357,56424,55356,57340])}return!1}function d(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(i=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},o=0;o<i.length;o++)t.supports[i[o]]=l(i[o]),t.supports.everything=t.supports.everything&&t.supports[i[o]],"flag"!==i[o]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[i[o]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(r=t.source||{}).concatemoji?d(r.concatemoji):r.wpemoji&&r.twemoji&&(d(r.twemoji),d(r.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='toolset-common-es-css'  href='https://plastic.empathy.works/wp-content/plugins/toolset-blocks/vendor/toolset/common-es/public/toolset-common-es.css?ver=122000' type='text/css' media='all' />
+<link rel='stylesheet' id='toolset_blocks-style-css-css'  href='https://plastic.empathy.works/wp-content/plugins/toolset-blocks/vendor/toolset/blocks/public/css/style.css?ver=1.1.3' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-block-library-css'  href='https://plastic.empathy.works/wp-includes/css/dist/block-library/style.min.css?ver=5.4' type='text/css' media='all' />
+<link rel='stylesheet' id='view_editor_gutenberg_frontend_assets-css'  href='https://plastic.empathy.works/wp-content/plugins/toolset-blocks/public/css/views-frontend.css?ver=3.1.3' type='text/css' media='all' />
+<link rel='stylesheet' id='hello-elementor-css'  href='https://plastic.empathy.works/wp-content/themes/hello-elementor/style.min.css?ver=2.2.0' type='text/css' media='all' />
+<link rel='stylesheet' id='hello-elementor-theme-style-css'  href='https://plastic.empathy.works/wp-content/themes/hello-elementor/theme.min.css?ver=2.2.0' type='text/css' media='all' />
+<link rel='stylesheet' id='elementor-icons-css'  href='https://plastic.empathy.works/wp-content/plugins/elementor/assets/lib/eicons/css/elementor-icons.min.css?ver=5.6.2' type='text/css' media='all' />
+<link rel='stylesheet' id='elementor-animations-css'  href='https://plastic.empathy.works/wp-content/plugins/elementor/assets/lib/animations/animations.min.css?ver=2.9.7' type='text/css' media='all' />
+<link rel='stylesheet' id='elementor-frontend-css'  href='https://plastic.empathy.works/wp-content/plugins/elementor/assets/css/frontend.min.css?ver=2.9.7' type='text/css' media='all' />
+<link rel='stylesheet' id='elementor-pro-css'  href='https://plastic.empathy.works/wp-content/plugins/elementor-pro/assets/css/frontend.min.css?ver=2.9.2' type='text/css' media='all' />
+<link rel='stylesheet' id='elementor-global-css'  href='https://plastic.empathy.works/wp-content/uploads/elementor/css/global.css?ver=1586660670' type='text/css' media='all' />
+<link rel='stylesheet' id='elementor-post-259-css'  href='https://plastic.empathy.works/wp-content/uploads/elementor/css/post-259.css?ver=1586687041' type='text/css' media='all' />
+<link rel='stylesheet' id='elementor-post-608-css'  href='https://plastic.empathy.works/wp-content/uploads/elementor/css/post-608.css?ver=1586687090' type='text/css' media='all' />
+<link rel='stylesheet' id='mediaelement-css'  href='https://plastic.empathy.works/wp-includes/js/mediaelement/mediaelementplayer-legacy.min.css?ver=4.2.13-9993131' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-mediaelement-css'  href='https://plastic.empathy.works/wp-includes/js/mediaelement/wp-mediaelement.min.css?ver=5.4' type='text/css' media='all' />
+<link rel='stylesheet' id='views-pagination-style-css'  href='https://plastic.empathy.works/wp-content/plugins/toolset-blocks/embedded/res/css/wpv-pagination.css?ver=3.1.3' type='text/css' media='all' />
+<style id='views-pagination-style-inline-css' type='text/css'>
+.wpv-sort-list-dropdown.wpv-sort-list-dropdown-style-default > span.wpv-sort-list,.wpv-sort-list-dropdown.wpv-sort-list-dropdown-style-default .wpv-sort-list-item {border-color: #cdcdcd;}.wpv-sort-list-dropdown.wpv-sort-list-dropdown-style-default .wpv-sort-list-item a {color: #444;background-color: #fff;}.wpv-sort-list-dropdown.wpv-sort-list-dropdown-style-default a:hover,.wpv-sort-list-dropdown.wpv-sort-list-dropdown-style-default a:focus {color: #000;background-color: #eee;}.wpv-sort-list-dropdown.wpv-sort-list-dropdown-style-default .wpv-sort-list-item.wpv-sort-list-current a {color: #000;background-color: #eee;}.wpv-sort-list-dropdown.wpv-sort-list-dropdown-style-grey > span.wpv-sort-list,.wpv-sort-list-dropdown.wpv-sort-list-dropdown-style-grey .wpv-sort-list-item {border-color: #cdcdcd;}.wpv-sort-list-dropdown.wpv-sort-list-dropdown-style-grey .wpv-sort-list-item a {color: #444;background-color: #eeeeee;}.wpv-sort-list-dropdown.wpv-sort-list-dropdown-style-grey a:hover,.wpv-sort-list-dropdown.wpv-sort-list-dropdown-style-grey a:focus {color: #000;background-color: #e5e5e5;}.wpv-sort-list-dropdown.wpv-sort-list-dropdown-style-grey .wpv-sort-list-item.wpv-sort-list-current a {color: #000;background-color: #e5e5e5;}.wpv-sort-list-dropdown.wpv-sort-list-dropdown-style-blue > span.wpv-sort-list,.wpv-sort-list-dropdown.wpv-sort-list-dropdown-style-blue .wpv-sort-list-item {border-color: #0099cc;}.wpv-sort-list-dropdown.wpv-sort-list-dropdown-style-blue .wpv-sort-list-item a {color: #444;background-color: #cbddeb;}.wpv-sort-list-dropdown.wpv-sort-list-dropdown-style-blue a:hover,.wpv-sort-list-dropdown.wpv-sort-list-dropdown-style-blue a:focus {color: #000;background-color: #95bedd;}.wpv-sort-list-dropdown.wpv-sort-list-dropdown-style-blue .wpv-sort-list-item.wpv-sort-list-current a {color: #000;background-color: #95bedd;}
+</style>
+<link rel='stylesheet' id='google-fonts-1-css'  href='https://fonts.googleapis.com/css?family=Roboto%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CRoboto+Slab%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CMontserrat%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic&#038;ver=5.4' type='text/css' media='all' />
+<link rel='https://api.w.org/' href='https://plastic.empathy.works/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://plastic.empathy.works/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://plastic.empathy.works/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 5.4" />
+<link rel="canonical" href="https://plastic.empathy.works/future/" />
+<link rel='shortlink' href='https://plastic.empathy.works/?p=557' />
+<link rel="alternate" type="application/json+oembed" href="https://plastic.empathy.works/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fplastic.empathy.works%2Ffuture%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://plastic.empathy.works/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fplastic.empathy.works%2Ffuture%2F&#038;format=xml" />
+		<script>
+			document.documentElement.className = document.documentElement.className.replace( 'no-js', 'js' );
+		</script>
+				<style>
+			.no-js img.lazyload { display: none; }
+			figure.wp-block-image img.lazyloading { min-width: 150px; }
+							.lazyload, .lazyloading { opacity: 0; }
+				.lazyloaded {
+					opacity: 1;
+					transition: opacity 400ms;
+					transition-delay: 0ms;
+				}
+					</style>
+				<style type="text/css" id="wp-custom-css">
+			.site-header {
+	z-index: 3;
+  position: relative;
+}		</style>
+		</head>
+<body class="page-template-default page page-id-557 elementor-default elementor-kit-230 elementor-page-608">
 
-        <div class="page-content">
-            <h3>Plastic will never go away, and it never should. Plastic can do so much good for this world.</h3>
-            <p>Left unchecked, the world is going to drown in plastic. The amount of plastic on earth is expected to be <strong>4X</strong> higher than it is today by the year 2050. If you think the problem is bad now, imagine what it could be like in 30 years!</p>
-            
-            <figure class="wp-block-image size-large"><img alt="" data-srcset="https://825744.smushcdn.com/1643124/wp-content/uploads/2020/03/Global_plastic-packaging-projections_2050cZeroWasteLivingLab-by-enviu.jpg?size=160x143&amp;lossy=1&amp;strip=1&amp;webp=1 160w, https://825744.smushcdn.com/1643124/wp-content/uploads/2020/03/Global_plastic-packaging-projections_2050cZeroWasteLivingLab-by-enviu-300x269.jpg?lossy=1&amp;strip=1&amp;webp=1 300w, https://825744.smushcdn.com/1643124/wp-content/uploads/2020/03/Global_plastic-packaging-projections_2050cZeroWasteLivingLab-by-enviu.jpg?size=480x430&amp;lossy=1&amp;strip=1&amp;webp=1 480w, https://825744.smushcdn.com/1643124/wp-content/uploads/2020/03/Global_plastic-packaging-projections_2050cZeroWasteLivingLab-by-enviu.jpg?size=640x574&amp;lossy=1&amp;strip=1&amp;webp=1 640w, https://825744.smushcdn.com/1643124/wp-content/uploads/2020/03/Global_plastic-packaging-projections_2050cZeroWasteLivingLab-by-enviu-768x688.jpg?lossy=1&amp;strip=1&amp;webp=1 768w, https://825744.smushcdn.com/1643124/wp-content/uploads/2020/03/Global_plastic-packaging-projections_2050cZeroWasteLivingLab-by-enviu-1024x918.jpg?lossy=1&amp;strip=1&amp;webp=1 1024w, https://825744.smushcdn.com/1643124/wp-content/uploads/2020/03/Global_plastic-packaging-projections_2050cZeroWasteLivingLab-by-enviu-1536x1376.jpg?lossy=1&amp;strip=1&amp;webp=1 1536w, https://825744.smushcdn.com/1643124/wp-content/uploads/2020/03/Global_plastic-packaging-projections_2050cZeroWasteLivingLab-by-enviu.jpg?lossy=1&amp;strip=1&amp;webp=1 2000w" sizes="(max-width: 800px) 100vw, 800px" data-src="https://825744.smushcdn.com/1643124/wp-content/uploads/2020/03/Global_plastic-packaging-projections_2050cZeroWasteLivingLab-by-enviu-1024x918.jpg?lossy=1&amp;strip=1&amp;webp=1" class="wp-image-585 ls-is-cached lazyloaded" src="https://825744.smushcdn.com/1643124/wp-content/uploads/2020/03/Global_plastic-packaging-projections_2050cZeroWasteLivingLab-by-enviu-1024x918.jpg?lossy=1&amp;strip=1&amp;webp=1" loading="lazy" srcset="https://825744.smushcdn.com/1643124/wp-content/uploads/2020/03/Global_plastic-packaging-projections_2050cZeroWasteLivingLab-by-enviu.jpg?size=160x143&amp;lossy=1&amp;strip=1&amp;webp=1 160w, https://825744.smushcdn.com/1643124/wp-content/uploads/2020/03/Global_plastic-packaging-projections_2050cZeroWasteLivingLab-by-enviu-300x269.jpg?lossy=1&amp;strip=1&amp;webp=1 300w, https://825744.smushcdn.com/1643124/wp-content/uploads/2020/03/Global_plastic-packaging-projections_2050cZeroWasteLivingLab-by-enviu.jpg?size=480x430&amp;lossy=1&amp;strip=1&amp;webp=1 480w, https://825744.smushcdn.com/1643124/wp-content/uploads/2020/03/Global_plastic-packaging-projections_2050cZeroWasteLivingLab-by-enviu.jpg?size=640x574&amp;lossy=1&amp;strip=1&amp;webp=1 640w, https://825744.smushcdn.com/1643124/wp-content/uploads/2020/03/Global_plastic-packaging-projections_2050cZeroWasteLivingLab-by-enviu-768x688.jpg?lossy=1&amp;strip=1&amp;webp=1 768w, https://825744.smushcdn.com/1643124/wp-content/uploads/2020/03/Global_plastic-packaging-projections_2050cZeroWasteLivingLab-by-enviu-1024x918.jpg?lossy=1&amp;strip=1&amp;webp=1 1024w, https://825744.smushcdn.com/1643124/wp-content/uploads/2020/03/Global_plastic-packaging-projections_2050cZeroWasteLivingLab-by-enviu-1536x1376.jpg?lossy=1&amp;strip=1&amp;webp=1 1536w, https://825744.smushcdn.com/1643124/wp-content/uploads/2020/03/Global_plastic-packaging-projections_2050cZeroWasteLivingLab-by-enviu.jpg?lossy=1&amp;strip=1&amp;webp=1 2000w"><noscript><img src="https://825744.smushcdn.com/1643124/wp-content/uploads/2020/03/Global_plastic-packaging-projections_2050cZeroWasteLivingLab-by-enviu-1024x918.jpg?lossy=1&strip=1&webp=1" alt="" class="wp-image-585" srcset="https://825744.smushcdn.com/1643124/wp-content/uploads/2020/03/Global_plastic-packaging-projections_2050cZeroWasteLivingLab-by-enviu.jpg?size=160x143&amp;lossy=1&amp;strip=1&amp;webp=1 160w, https://825744.smushcdn.com/1643124/wp-content/uploads/2020/03/Global_plastic-packaging-projections_2050cZeroWasteLivingLab-by-enviu-300x269.jpg?lossy=1&amp;strip=1&amp;webp=1 300w, https://825744.smushcdn.com/1643124/wp-content/uploads/2020/03/Global_plastic-packaging-projections_2050cZeroWasteLivingLab-by-enviu.jpg?size=480x430&amp;lossy=1&amp;strip=1&amp;webp=1 480w, https://825744.smushcdn.com/1643124/wp-content/uploads/2020/03/Global_plastic-packaging-projections_2050cZeroWasteLivingLab-by-enviu.jpg?size=640x574&amp;lossy=1&amp;strip=1&amp;webp=1 640w, https://825744.smushcdn.com/1643124/wp-content/uploads/2020/03/Global_plastic-packaging-projections_2050cZeroWasteLivingLab-by-enviu-768x688.jpg?lossy=1&amp;strip=1&amp;webp=1 768w, https://825744.smushcdn.com/1643124/wp-content/uploads/2020/03/Global_plastic-packaging-projections_2050cZeroWasteLivingLab-by-enviu-1024x918.jpg?lossy=1&amp;strip=1&amp;webp=1 1024w, https://825744.smushcdn.com/1643124/wp-content/uploads/2020/03/Global_plastic-packaging-projections_2050cZeroWasteLivingLab-by-enviu-1536x1376.jpg?lossy=1&amp;strip=1&amp;webp=1 1536w, https://825744.smushcdn.com/1643124/wp-content/uploads/2020/03/Global_plastic-packaging-projections_2050cZeroWasteLivingLab-by-enviu.jpg?lossy=1&amp;strip=1&amp;webp=1 2000w" sizes="(max-width: 800px) 100vw, 800px" /></noscript><figcaption>Source: <a href="https://www.greenpeace.org/usa/myths-about-ending-plastic-pollution/global_plastic-packaging-projections_2050czerowastelivinglab-by-enviu/">Greenpeace</a></figcaption></figure>
-            
-            <h3>Our problem is that we aren’t in control of our plastic addiction, and it’s killing us and our environment.</h3>
-            <p>Thankfully, there is a lot we can do to tackle the problem, however – at the government, industrial, and <a href="https://plastic.empathy.works/2020/03/28/what-we-can-do-to-slow-the-growth-in-single-use-plastic/">individual</a> levels. There is no silver bullet to solve the problem of rampant plastic pollution, but by combining a number of steps we can tackle the problem. </p>
-            <p>The timeline below shows some of the potential solutions to reducing plastic waste. As you scroll down them, you can choose whether the world implements them or doesn’t. What happens to the growth in plastic as you do*?</p>
+		<div data-elementor-type="header" data-elementor-id="259" class="elementor elementor-259 elementor-location-header" data-elementor-settings="[]">
+		<div class="elementor-inner">
+			<div class="elementor-section-wrap">
+						<header class="elementor-element elementor-element-d75577f elementor-section-content-middle elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-id="d75577f" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;gradient&quot;,&quot;sticky&quot;:&quot;top&quot;,&quot;sticky_on&quot;:[&quot;desktop&quot;,&quot;tablet&quot;,&quot;mobile&quot;],&quot;sticky_offset&quot;:0,&quot;sticky_effects_offset&quot;:0}">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-fa01b3a elementor-hidden-phone elementor-column elementor-col-50 elementor-top-column" data-id="fa01b3a" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-8f2191a elementor-widget elementor-widget-theme-site-title elementor-widget-heading" data-id="8f2191a" data-element_type="widget" data-widget_type="theme-site-title.default">
+				<div class="elementor-widget-container">
+			<h4 class="elementor-heading-title elementor-size-default"><a href="https://plastic.empathy.works">Plastic Monument</a></h4>		</div>
+				</div>
+						</div>
+			</div>
+		</div>
+				<div class="elementor-element elementor-element-4d4e71c7 elementor-column elementor-col-50 elementor-top-column" data-id="4d4e71c7" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-34cdd073 elementor-nav-menu__align-right elementor-nav-menu--indicator-none elementor-nav-menu--dropdown-none elementor-widget elementor-widget-nav-menu" data-id="34cdd073" data-element_type="widget" data-settings="{&quot;layout&quot;:&quot;horizontal&quot;}" data-widget_type="nav-menu.default">
+				<div class="elementor-widget-container">
+						<nav role="navigation" class="elementor-nav-menu--main elementor-nav-menu__container elementor-nav-menu--layout-horizontal e--pointer-framed e--animation-draw"><ul id="menu-1-34cdd073" class="elementor-nav-menu"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-559"><a href="https://plastic.empathy.works/" class="elementor-item">Past</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-557 current_page_item menu-item-560"><a href="https://plastic.empathy.works/future/" aria-current="page" class="elementor-item elementor-item-active">Future</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-151"><a href="https://plastic.empathy.works/blog/" class="elementor-item">Blog</a></li>
+</ul></nav>
+					<div class="elementor-menu-toggle" role="button" tabindex="0" aria-label="Menu Toggle" aria-expanded="false">
+			<i class="eicon-menu-bar" aria-hidden="true"></i>
+			<span class="elementor-screen-only">Menu</span>
+		</div>
+			<nav class="elementor-nav-menu--dropdown elementor-nav-menu__container" role="navigation" aria-hidden="true"><ul id="menu-2-34cdd073" class="elementor-nav-menu"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-559"><a href="https://plastic.empathy.works/" class="elementor-item">Past</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-557 current_page_item menu-item-560"><a href="https://plastic.empathy.works/future/" aria-current="page" class="elementor-item elementor-item-active">Future</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-151"><a href="https://plastic.empathy.works/blog/" class="elementor-item">Blog</a></li>
+</ul></nav>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</header>
+					</div>
+		</div>
+		</div>
+				<div data-elementor-type="single" data-elementor-id="608" class="elementor elementor-608 elementor-location-single post-557 page type-page status-publish hentry" data-elementor-settings="[]">
+		<div class="elementor-inner">
+			<div class="elementor-section-wrap">
+						<section class="elementor-element elementor-element-4e43977 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-id="4e43977" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-b72c74e elementor-column elementor-col-100 elementor-top-column" data-id="b72c74e" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-9a349aa elementor-widget elementor-widget-text-editor" data-id="9a349aa" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p>Plastic will never go away, and it never should. Plastic can do so much good for this world.</p><p>Left unchecked, the world is going to drown in plastic. The amount of plastic on earth is expected to be 4X higher than it is today by the year 2050. If you think the problem is bad now, imagine what it could be like in 30 years!</p><div>Our problem is that we aren&#8217;t in control of our plastic addiciton, and it&#8217;s killing us and our environment.</div><div> </div><div>Thankfully, there is a lot we can do to tackle the problem, however &#8211; at the government, industrial, and <a href="https://plastic.empathy.works/2020/03/28/what-we-can-do-to-slow-the-growth-in-single-use-plastic/">individual</a> levels. There is no silver bullet to solve the problem of rampant plastic pollution, but by combining a number of steps we can tackle the problem. </div><div> </div><div>The timeline below shows some of the potential solutions to reducing plastic waste. As you scroll down them, you can choose whether the world implements them or doesn&#8217;t. What happens to the growth in plastic as you do*?</div></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section class="elementor-element elementor-element-d084ac4 elementor-section-height-min-height elementor-section-boxed elementor-section-height-default elementor-section-items-middle elementor-section elementor-top-section" data-id="d084ac4" data-element_type="section" data-settings="{&quot;sticky&quot;:&quot;top&quot;,&quot;background_background&quot;:&quot;gradient&quot;,&quot;sticky_offset&quot;:30,&quot;sticky_on&quot;:[&quot;desktop&quot;,&quot;tablet&quot;,&quot;mobile&quot;],&quot;sticky_effects_offset&quot;:0}">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-cd85c0e elementor-column elementor-col-100 elementor-top-column" data-id="cd85c0e" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-6b47571 elementor-widget elementor-widget-html" data-id="6b47571" data-element_type="widget" data-widget_type="html.default">
+				<div class="elementor-widget-container">
+			<canvas id="chart" style="height: 250px; width: 100%"></canvas>		</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section class="elementor-element elementor-element-0f5109b elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-id="0f5109b" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-81bcb66 elementor-column elementor-col-100 elementor-top-column" data-id="81bcb66" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div class="elementor-element elementor-element-7958f70 elementor-widget elementor-widget-theme-post-content" data-id="7958f70" data-element_type="widget" data-widget_type="theme-post-content.default">
+				<div class="elementor-widget-container">
+			
+<h2>2021</h2>
 
 
 
-
-            <h3>Our problem is that we aren&#8217;t in control of our plastic addiction, and it&#8217;s killing us and our environment.</h3>
-
+<p>A ban on single-use plastics is implemented in much of North America. The ban reduces pollution from single-use plastic products and packaging – such as shopping bags, straws, cutlery, plates, and stir sticks</p>
 
 
-            <p>Thankfully, there is a lot we can do to tackle the problem, however &#8211; at the government, industrial, and <a href="https://plastic.empathy.works/2020/03/28/what-we-can-do-to-slow-the-growth-in-single-use-plastic/">individual</a> levels. There is no silver bullet to solve the problem of rampant plastic pollution, but by combining a number of steps we can tackle the problem. </p>
-            
-            
-            
-            <p>The timeline below shows some of the potential solutions to reducing plastic waste. As you scroll down them, you can choose whether the world implements them or doesn&#8217;t. What happens to the growth in plastic as you do*?</p>
-            
-            
-            
-            <h2>2021</h2>
-            
-            
-            
-            <p>A ban on single-use plastics is implemented in much of North America. The ban reduces pollution from single-use plastic products and packaging – such as shopping bags, straws, cutlery, plates, and stir sticks</p>
-            
-            
-            
-            <div class="wp-block-buttons aligncenter">
-            <div class="wp-block-button is-style-outline"><a class="wp-block-button__link has-text-color has-very-dark-gray-color" rel="{&quot;year&quot;:2021,&quot;modifier&quot;:-0.01}">Plastic consumption is reduced by 1% per person for 500 million people</a></div>
-            </div>
-            
-            
-            
-            <h2>2022</h2>
-            
-            
-            
-            <p>The ban on single-use plastic&nbsp;<a href="https://www.bbc.com/news/world-asia-china-51171491">extends throughout China</a>.</p>
-            
-            
-            
-            <div class="wp-block-buttons aligncenter">
-            <div class="wp-block-button is-style-outline"><a class="wp-block-button__link has-text-color has-very-dark-gray-color" rel="{&quot;year&quot;:2022,&quot;modifier&quot;:-0.01}">Plastic consumption is reduced by 1% for another 1.5 billion people.</a></div>
-            </div>
-            
-            
-            
-            <h2>2023</h2>
-            
-            
-            
-            <p>290 companies who signed the ‘New Plastics Economy Global Commitment’ in 2018 achieve reuse, recycling or composting of 100% of packaging sold worldwide.</p>
-            
-            
-            
-            <div class="wp-block-buttons aligncenter">
-            <div class="wp-block-button is-style-outline"><a class="wp-block-button__link has-text-color has-very-dark-gray-color" rel="{&quot;year&quot;:2023,&quot;modifier&quot;:-0.05}">Plastic consumption is reduced by 5% for the entire world.</a></div>
-            </div>
-            
-            
-            
-            <h2>2029</h2>
-            
-            
-            
-            <p>Massive expansion of mechanical recycling capacity results in a growth of recycling from 12% to 20%&nbsp;<a href="https://www.mckinsey.com/industries/chemicals/our-insights/how-plastics-waste-recycling-could-transform-the-chemical-industry">[1]</a></p>
-            
-            
-            
-            <div class="wp-block-buttons aligncenter">
-            <div class="wp-block-button is-style-outline"><a class="wp-block-button__link has-text-color has-very-dark-gray-color" rel="{&quot;year&quot;:2029,&quot;modifier&quot;:-0.08}">Plastic consumption is reduced by 8% for the entire world.</a></div>
-            </div>
-            
-            
-            
-            <h2>2030</h2>
-            
-            
-            
-            <p>Advances in new technologies for plastic recyling are widely adopted, including monomer recycling and reprocessing of plastic.</p>
-            
-            
-            
-            <div class="wp-block-buttons aligncenter">
-            <div class="wp-block-button is-style-outline"><a class="wp-block-button__link has-text-color has-very-dark-gray-color" rel="{&quot;year&quot;:2030,&quot;modifier&quot;:-0.05}">Plastic consumption is reduced by 5% for the entire world.</a></div>
-            </div>
-            
-            
-            
-            <h2>2031</h2>
-            
-            
-            
-            <p>New advances in farming allow fresh produce to be delivered directly from the farm to consumers, and compost is returned to farms for reuse.</p>
-            
-            
-            
-            <div class="wp-block-buttons aligncenter">
-            <div class="wp-block-button is-style-outline"><a class="wp-block-button__link has-text-color has-very-dark-gray-color" rel="{&quot;year&quot;:2031,&quot;modifier&quot;:-0.05}">Plastic consumption is reduced by 5% per year.</a></div>
-            </div>
-            
-            
-            
-            <h2>2032</h2>
-            
-            
-            
-            <p>Nearly all products are purchased online and delivered via drones and self-driving vehicles. New regulations are put in place to ban plastic wrap outside of boxes.</p>
-            
-            
-            
-            <div class="wp-block-buttons aligncenter">
-            <div class="wp-block-button is-style-outline"><a class="wp-block-button__link has-text-color has-very-dark-gray-color" rel="{&quot;year&quot;:2032,&quot;modifier&quot;:-0.01}">Plastic consumption is reduced by 1% per year.</a></div>
-            </div>
-            
-            
-            
-            <h2>2033</h2>
-            
-            
-            
-            <p>Mycelium gains widespread adoption in packaging and product design.</p>
-            
-            
-            
-            <div class="wp-block-buttons aligncenter">
-            <div class="wp-block-button is-style-outline"><a class="wp-block-button__link has-text-color has-very-dark-gray-color" rel="{&quot;year&quot;:2033,&quot;modifier&quot;:-0.02}">Plastic consumption decreased by 2% worldwide.</a></div>
-            </div>
-            
-            
-            
-            <h2>2035</h2>
-            
-            
-            
-            <p>Soft-shell plastic is banned from all non-medical usage</p>
-            
-            
-            
-            <div class="wp-block-buttons aligncenter">
-            <div class="wp-block-button is-style-outline"><a class="wp-block-button__link has-text-color has-very-dark-gray-color" rel="{&quot;year&quot;:2035,&quot;modifier&quot;:-0.03}">Plastic consumption decreased by 3% worldwide.</a></div>
-            </div>
-            
-            
-            
-            <p><em>Please note: it’s really hard to estimate exactly when these technologies and policies will come into effect, and what will happen if they do. Whenever possible we’ve tried to link to additional articles or resources to back up our estimates, but these numbers are ultimately just estimates. Hopefully they give you a rough idea of what can be done!</em></p>
 
-        </div>
-            
+<div class="wp-block-buttons aligncenter">
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link has-text-color has-very-dark-gray-color" rel="{&quot;year&quot;:2021,&quot;modifier&quot;:-0.01}">Plastic consumption is reduced by 1% per person for 500 million people</a></div>
+</div>
 
-        <script src="dist/future.bundle.js"></script>
+
+
+<h2>2022</h2>
+
+
+
+<p>The ban on single-use plastic&nbsp;<a href="https://www.bbc.com/news/world-asia-china-51171491">extends throughout China</a>.</p>
+
+
+
+<div class="wp-block-buttons aligncenter">
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link has-text-color has-very-dark-gray-color" rel="{&quot;year&quot;:2022,&quot;modifier&quot;:-0.01}">Plastic consumption is reduced by 1% for another 1.5 billion people.</a></div>
+</div>
+
+
+
+<h2>2023</h2>
+
+
+
+<p>290 companies who signed the ‘New Plastics Economy Global Commitment’ in 2018 achieve reuse, recycling or composting of 100% of packaging sold worldwide.</p>
+
+
+
+<div class="wp-block-buttons aligncenter">
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link has-text-color has-very-dark-gray-color" rel="{&quot;year&quot;:2023,&quot;modifier&quot;:-0.05}">Plastic consumption is reduced by 5% for the entire world.</a></div>
+</div>
+
+
+
+<h2>2029</h2>
+
+
+
+<p>Massive expansion of mechanical recycling capacity results in a growth of recycling from 12% to 20%&nbsp;<a href="https://www.mckinsey.com/industries/chemicals/our-insights/how-plastics-waste-recycling-could-transform-the-chemical-industry">[1]</a></p>
+
+
+
+<div class="wp-block-buttons aligncenter">
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link has-text-color has-very-dark-gray-color" rel="{&quot;year&quot;:2029,&quot;modifier&quot;:-0.08}">Plastic consumption is reduced by 8% for the entire world.</a></div>
+</div>
+
+
+
+<h2>2030</h2>
+
+
+
+<p>Advances in new technologies for plastic recyling are widely adopted, including monomer recycling and reprocessing of plastic.</p>
+
+
+
+<div class="wp-block-buttons aligncenter">
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link has-text-color has-very-dark-gray-color" rel="{&quot;year&quot;:2030,&quot;modifier&quot;:-0.05}">Plastic consumption is reduced by 5% for the entire world.</a></div>
+</div>
+
+
+
+<h2>2031</h2>
+
+
+
+<p>New advances in farming allow fresh produce to be delivered directly from the farm to consumers, and compost is returned to farms for reuse.</p>
+
+
+
+<div class="wp-block-buttons aligncenter">
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link has-text-color has-very-dark-gray-color" rel="{&quot;year&quot;:2031,&quot;modifier&quot;:-0.05}">Plastic consumption is reduced by 5% per year.</a></div>
+</div>
+
+
+
+<h2>2032</h2>
+
+
+
+<p>Nearly all products are purchased online and delivered via drones and self-driving vehicles. New regulations are put in place to ban plastic wrap outside of boxes.</p>
+
+
+
+<div class="wp-block-buttons aligncenter">
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link has-text-color has-very-dark-gray-color" rel="{&quot;year&quot;:2032,&quot;modifier&quot;:-0.01}">Plastic consumption is reduced by 1% per year.</a></div>
+</div>
+
+
+
+<h2>2033</h2>
+
+
+
+<p>Mycelium gains widespread adoption in packaging and product design.</p>
+
+
+
+<div class="wp-block-buttons aligncenter">
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link has-text-color has-very-dark-gray-color" rel="{&quot;year&quot;:2033,&quot;modifier&quot;:-0.02}">Plastic consumption decreased by 2% worldwide.</a></div>
+</div>
+
+
+
+<h2>2035</h2>
+
+
+
+<p>Soft-shell plastic is banned from all non-medical usage</p>
+
+
+
+<div class="wp-block-buttons aligncenter">
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link has-text-color has-very-dark-gray-color" rel="{&quot;year&quot;:2035,&quot;modifier&quot;:-0.03}">Plastic consumption decreased by 3% worldwide.</a></div>
+</div>
+
+
+
+<p><em>Please note: it’s really hard to estimate exactly when these technologies and policies will come into effect, and what will happen if they do. Whenever possible we’ve tried to link to additional articles or resources to back up our estimates, but these numbers are ultimately just estimates. Hopefully they give you a rough idea of what can be done!</em></p>
+
+
+
+<script src="dist/future.bundle.js"></script>
         <script type="text/javascript">
             predictor.generateChart(document.getElementById('chart'))
             document.querySelectorAll('.wp-block-button__link').forEach((btnEl) => {
@@ -189,5 +315,40 @@
                 })
             })
         </script>
-	</body>
+		</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+					</div>
+		</div>
+		</div>
+		<footer id="site-footer" class="site-footer" role="contentinfo">
+	</footer>
+
+<script type='text/javascript' src='https://plastic.empathy.works/wp-content/plugins/wp-smush-pro/app/assets/js/smush-lazy-load.min.js?ver=3.6.1'></script>
+<script type='text/javascript' src='https://plastic.empathy.works/wp-includes/js/wp-embed.min.js?ver=5.4'></script>
+<script type='text/javascript' src='https://plastic.empathy.works/wp-includes/js/jquery/jquery.js?ver=1.12.4-wp'></script>
+<script type='text/javascript' src='https://plastic.empathy.works/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<script type='text/javascript' src='https://plastic.empathy.works/wp-content/plugins/elementor-pro/assets/lib/smartmenus/jquery.smartmenus.min.js?ver=1.0.1'></script>
+<script type='text/javascript' src='https://plastic.empathy.works/wp-content/plugins/elementor/assets/js/frontend-modules.min.js?ver=2.9.7'></script>
+<script type='text/javascript' src='https://plastic.empathy.works/wp-content/plugins/elementor-pro/assets/lib/sticky/jquery.sticky.min.js?ver=2.9.2'></script>
+<script type='text/javascript'>
+var ElementorProFrontendConfig = {"ajaxurl":"https:\/\/plastic.empathy.works\/wp-admin\/admin-ajax.php","nonce":"080d4e52f7","i18n":{"toc_no_headings_found":"No headings were found on this page."},"shareButtonsNetworks":{"facebook":{"title":"Facebook","has_counter":true},"twitter":{"title":"Twitter"},"google":{"title":"Google+","has_counter":true},"linkedin":{"title":"LinkedIn","has_counter":true},"pinterest":{"title":"Pinterest","has_counter":true},"reddit":{"title":"Reddit","has_counter":true},"vk":{"title":"VK","has_counter":true},"odnoklassniki":{"title":"OK","has_counter":true},"tumblr":{"title":"Tumblr"},"delicious":{"title":"Delicious"},"digg":{"title":"Digg"},"skype":{"title":"Skype"},"stumbleupon":{"title":"StumbleUpon","has_counter":true},"mix":{"title":"Mix"},"telegram":{"title":"Telegram"},"pocket":{"title":"Pocket","has_counter":true},"xing":{"title":"XING","has_counter":true},"whatsapp":{"title":"WhatsApp"},"email":{"title":"Email"},"print":{"title":"Print"}},"facebook_sdk":{"lang":"en_US","app_id":""}};
+</script>
+<script type='text/javascript' src='https://plastic.empathy.works/wp-content/plugins/elementor-pro/assets/js/frontend.min.js?ver=2.9.2'></script>
+<script type='text/javascript' src='https://plastic.empathy.works/wp-includes/js/jquery/ui/position.min.js?ver=1.11.4'></script>
+<script type='text/javascript' src='https://plastic.empathy.works/wp-content/plugins/elementor/assets/lib/dialog/dialog.min.js?ver=4.7.6'></script>
+<script type='text/javascript' src='https://plastic.empathy.works/wp-content/plugins/elementor/assets/lib/waypoints/waypoints.min.js?ver=4.0.2'></script>
+<script type='text/javascript' src='https://plastic.empathy.works/wp-content/plugins/elementor/assets/lib/swiper/swiper.min.js?ver=5.3.6'></script>
+<script type='text/javascript' src='https://plastic.empathy.works/wp-content/plugins/elementor/assets/lib/share-link/share-link.min.js?ver=2.9.7'></script>
+<script type='text/javascript'>
+var elementorFrontendConfig = {"environmentMode":{"edit":false,"wpPreview":false},"i18n":{"shareOnFacebook":"Share on Facebook","shareOnTwitter":"Share on Twitter","pinIt":"Pin it","downloadImage":"Download image"},"is_rtl":false,"breakpoints":{"xs":0,"sm":480,"md":768,"lg":1025,"xl":1440,"xxl":1600},"version":"2.9.7","urls":{"assets":"https:\/\/plastic.empathy.works\/wp-content\/plugins\/elementor\/assets\/"},"settings":{"page":[],"general":{"elementor_global_image_lightbox":"yes","elementor_lightbox_enable_counter":"yes","elementor_lightbox_enable_fullscreen":"yes","elementor_lightbox_enable_zoom":"yes","elementor_lightbox_enable_share":"yes","elementor_lightbox_title_src":"title","elementor_lightbox_description_src":"description"},"editorPreferences":[]},"post":{"id":557,"title":"What%20will%20the%20future%20look%20like%3F%20%E2%80%93%20Plastic%20Monument","excerpt":"","featuredImage":false}};
+</script>
+<script type='text/javascript' src='https://plastic.empathy.works/wp-content/plugins/elementor/assets/js/frontend.min.js?ver=2.9.7'></script>
+
+</body>
 </html>
