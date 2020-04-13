@@ -4,7 +4,6 @@ require('./future.scss')
 const Chart = require('chart.js')
 
 
-
 // convert strings to ints
 pillarData.forEach(row => _.forEach(['year', 'plasticMass', 'humanMass', 'population', 'plasticMassPerPopulation', 'plasticMassVs2020'], (key) => row[key] = parseFloat(row[key])));
 // add population data to pillar data
@@ -43,10 +42,12 @@ class FuturePredictor {
         this.yearModifiers.push({year, multiplier})
         this.yearModifiers = _.sortBy(this.yearModifiers, 'year');
         if(this.chart) { this.updateChart(); }
+        if(this.yearEls) { this.updateYearsMultipliers(); }
     }
     remove(year, multiplier) {
         this.yearModifiers = _.filter(this.yearModifiers, (modifier) => !_.isEqual(modifier, {year, multiplier}))
         if(this.chart) { this.updateChart(); }
+        if(this.yearEls) { this.updateYearsMultipliers(); }
     }
     getIndexForYear(year) {
         return year - this.startingYear;
@@ -116,6 +117,17 @@ class FuturePredictor {
         chart.data.datasets[0].data = predictor.modifiedMassPerYear;
         chart.data.datasets[1].data = predictor.massPerYear;
         chart.update()
+    }
+    updateYearsMultipliers(yearEls) {
+        if(!yearEls) { yearEls = this.yearEls; }
+        this.yearEls = yearEls;
+        // predictor.updateYearsMultipliers(document.querySelectorAll('#content-container h2'));
+
+        yearEls.forEach((el) => {
+            let modifiedMass = parseFloat(this.modifiedMassPerYear[this.getIndexForYear(parseInt(el.innerText))])
+            let modifiedMassPct = Math.round((modifiedMass - 1) * 100)
+            el.dataset['multiplier'] = modifiedMassPct;
+        })
     }
 }
 

@@ -1,8 +1,49 @@
-.wp-block-button__link {
-    transition: .2s all;
-    &.active {
-        background-color: #278d12;
-        color: #fff !important;
+#content-container {
+    .wp-block-group {
+        padding: 10px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+        box-shadow: 0 0 5px #ea4335;
+        border: 2px solid #ea4335;
+        transition: .4s border, 1.5s box-shadow;
+        &:before {
+            // 🎯🎤🏛🏭📺
+            content: "🔬 New Technology";
+            text-transform: uppercase;
+            margin-bottom: 5px;
+            font-weight: bold;
+            font-size: 0.8em;
+            display: block;
+            border-bottom: 1px solid #ddd;
+        }
+        &.active {
+            border: 2px solid #079c41;
+            box-shadow: 0 0 8px #079c41;
+        }
+        p:last-child {
+            margin-bottom: 0;
+        }
+    }
+    h2 {
+        color: #000;
+        &:after {
+            content: " has " attr(data-multiplier) "% more plastic than today";
+            font-size: 0.7em;
+            font-weight: bold;
+            color: #555;
+
+            // float: right;
+            // color: red;
+        }
+
+    }
+    .wp-block-button__link {
+        display: none;
+        transition: .2s all;
+        &.active {
+            background-color: #278d12;
+            color: #fff !important;
+        }
     }
 }
 // canvas {
@@ -10,3 +51,16 @@
 //     position: fixed;
 //     bottom: 0;
 // }
+
+#chart-container {
+    transition: .8 all;
+    &.elementor-sticky--active {
+        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+}
+
+
+
+@media screen and ( max-width: 375px ) {
+    #content-container h2:after { font-size: 0.5em; }
+}
