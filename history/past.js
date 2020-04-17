@@ -54,3 +54,13 @@ document.querySelectorAll('.past-timeline h2').forEach((el) => {
 });
 
 window.fallingMonument.maxSpeed = 0.3
+
+
+//TODO: 
+//different speed for different items
+//set opacity/color in threejs?
+//benchmark different models and try to simplify
+//change scale as years advance (simluate zoom out)
+//change speed as years advance (start off slow and gentle, get frantic)
+//switch to simpler models as the years advance
+//more ambitious - try to capture each frame and turn it into a movie; then i can do collision detection and simulate filling a room
