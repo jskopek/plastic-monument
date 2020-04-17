@@ -6,7 +6,7 @@ import _ from 'lodash';
 var scrollMonitor = require('scrollmonitor');
 // require('../css/main.scss')
 require('./past.scss')
-var appJSON = require('./past.json')
+var appJSON = require('./past-more-control.json')
 
 
 window.THREE = THREE; // Used by APP Scripts.
@@ -25,25 +25,29 @@ window.addEventListener( 'resize', function () {
 } );
 
 function selectYear(year, yearRangeMin=1952, yearRangeMax=2020) {
-    var yearPct = (year - yearRangeMin) / (yearRangeMax - yearRangeMin) + 0.01;
-    window.fallingMonument.newItemProbability = yearPct;
+    var yearPct = (year - yearRangeMin) / (yearRangeMax - yearRangeMin);
+    var speed = yearPct + 0.1;
+    var scale = 2 - (1.5 * yearPct);
+    var newItemProbability = yearPct + 0.005;
+    window.fallingMonument.newItemProbability = newItemProbability;
+    console.log({newItemProbability})
 
-    let activeItemKeys = []
-    var addItem = function(minYear, itemKey, occuranceMultiplier) { if (year > minYear) _.times(occuranceMultiplier || 1, () => activeItemKeys.push(itemKey)) }
+    let activeItems = []
+    var addItem = function(minYear, itemKey, occuranceMultiplier) { if (year > minYear) _.times(occuranceMultiplier || 1, () => activeItems.push({item: itemKey, scale: scale, speed: speed})) }
     addItem(1950, 'pen', 5)
     addItem(1952, 'pen', 5)
-    addItem(1964, 'credit-card', 3)
+    // addItem(1964, 'credit-card', 3)
     addItem(1969, 'bottle')
     addItem(1975, 'bottle')
     addItem(2000, 'fork-spoon', 10)
     addItem(2002, 'bottle', 4)
-    addItem(2006, 'credit-card', 10)
+    // addItem(2006, 'credit-card', 10)
     addItem(2010, 'bucket')
-    window.fallingMonument.activeItemKeys = activeItemKeys;
+    window.fallingMonument.activeItems = activeItems;
 
     // scene becomes more transparent as it becomes more chaotic; makes it easier to read text
-    sceneEl.classList.toggle('transparent-1', year > 1980)
-    sceneEl.classList.toggle('transparent-2', year > 2000)
+    sceneEl.classList.toggle('transparent-2', year > 1955)
+    // sceneEl.classList.toggle('transparent-2', year > 2000)
 
 }
 
@@ -54,6 +58,7 @@ document.querySelectorAll('.past-timeline h2').forEach((el) => {
 });
 
 window.fallingMonument.maxSpeed = 0.3
+window.fallingMonument.newItemTestDelay = 5;
 
 
 //TODO: 
