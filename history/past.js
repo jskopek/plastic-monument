@@ -6,7 +6,7 @@ import _ from 'lodash';
 var scrollMonitor = require('scrollmonitor');
 // require('../css/main.scss')
 require('./past.scss')
-var appJSON = require('./past-more-control.json')
+var appJSON = require('./past-simple.json')
 
 
 window.THREE = THREE; // Used by APP Scripts.
@@ -24,31 +24,61 @@ window.addEventListener( 'resize', function () {
     player.setSize( window.innerWidth, window.innerHeight );
 } );
 
+
+
+// periodically add items from activeKeys
+let newItemProbability = 0;
+let newItemTestDelay = 20;
+let activeKeys = [];
+let speed = 0.1;
+let scale = 0.5;
+
+setInterval(() => {
+    if (Math.random() < newItemProbability) {
+        let key = returnRandomKey()
+        let options = {speed: speed, scale: scale, x: randomCoord(50), y: 10, z: randomCoord(50)}
+        console.log(key, options);
+        fallingMonument.addItem(key, options);
+    }
+}, newItemTestDelay);
+
+function randomCoord(range) { return (Math.random() * 2 - 1) * range }
+function randomPosCoord(range) { return Math.random() * range }
+function returnRandomKey() { 
+    var itemIndex = Math.floor(Math.random() * activeKeys.length)
+    return activeKeys[itemIndex];
+}
+// end periodically add items from activeKeys
+
 function selectYear(year, yearRangeMin=1952, yearRangeMax=2020) {
     var yearPct = (year - yearRangeMin) / (yearRangeMax - yearRangeMin);
-    var speed = yearPct + 0.1;
-    var scale = 2 - (1.5 * yearPct);
-    var newItemProbability = yearPct + 0.005;
-    window.fallingMonument.newItemProbability = newItemProbability;
-    console.log({newItemProbability})
 
-    let activeItems = []
-    var addItem = function(minYear, itemKey, occuranceMultiplier) { if (year > minYear) _.times(occuranceMultiplier || 1, () => activeItems.push({item: itemKey, scale: scale, speed: speed})) }
-    addItem(1950, 'pen', 5)
-    addItem(1952, 'pen', 5)
-    // addItem(1964, 'credit-card', 3)
-    addItem(1969, 'bottle')
-    addItem(1975, 'bottle')
-    addItem(2000, 'fork-spoon', 10)
-    addItem(2002, 'bottle', 4)
-    // addItem(2006, 'credit-card', 10)
-    addItem(2010, 'bucket')
-    window.fallingMonument.activeItems = activeItems;
-
+    // update global properties
+    speed = yearPct + 0.1;
+    scale = 2 - (1.5 * yearPct);
+    newItemProbability = yearPct + 0.005;
+    activeKeys = generateActiveKeyList(year);
+    
     // scene becomes more transparent as it becomes more chaotic; makes it easier to read text
     sceneEl.classList.toggle('transparent-2', year > 1955)
     // sceneEl.classList.toggle('transparent-2', year > 2000)
+}
 
+function generateActiveKeyList(year) {
+    let activeKeys = []
+    var addActiveItem = function(minYear, key, occuranceMultiplier) {
+        if (year > minYear) _.times(occuranceMultiplier || 1, () => activeKeys.push(key)) 
+    }
+    addActiveItem(1950, 'pen', 5)
+    addActiveItem(1952, 'pen', 5)
+    // addActiveItem(1964, 'credit-card', 3)
+    addActiveItem(1969, 'bottle')
+    addActiveItem(1975, 'bottle')
+    addActiveItem(2000, 'fork-spoon', 10)
+    addActiveItem(2002, 'bottle', 4)
+    // addActiveItem(2006, 'credit-card', 10)
+    addActiveItem(2010, 'bucket')
+    return activeKeys;
 }
 
 // Monitoring scroll for wordpress history of plastic page
