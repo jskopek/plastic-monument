@@ -13,7 +13,7 @@
 			"generator": "Object3D.toJSON"
 		},
 		"object": {
-			"uuid": "9C2C30E3-292E-4A8A-81FA-6C09015D2203",
+			"uuid": "CEB6B973-9510-4721-99F8-44459897FED5",
 			"type": "PerspectiveCamera",
 			"name": "Camera",
 			"layers": 1,
@@ -23,7 +23,7 @@
 			"near": 0.1,
 			"far": 10000,
 			"focus": 10,
-			"aspect": 1.403048,
+			"aspect": 1.425831,
 			"filmGauge": 35,
 			"filmOffset": 0
 		}
@@ -1006,7 +1006,7 @@
 		"449AB29E-5281-4B62-9771-2E6E57D32494": [
 			{
 				"name": "",
-				"source": "// variables\nvar fallingMonument = {\n//\tactiveItemKeys: ['bottle', 'pen', 'credit-card', 'bucket', 'lunch-box', 'fork-spoon'],\n\tactiveItemKeys: ['pen'],\n\tnewItemProbability: 0,\n\tnewItemTestDelay: 20,\n\tmaxSpeed: 0.9,\n\tposRange: 50\n}\n\n\n// init objects\nvar items = {\n\t'bottle': initObject('Bottle'),\n\t'pen': initObject('Pen'),\n\t'credit-card': initObject('CreditCard'),\n\t'bucket': initObject('Bucket'),\t\n\t'lunch-box': initObject('LunchBox'),\t\n\t'fork-spoon': initObject('ForkSpoon'),\t\n}\n\n// init group\nvar group = new THREE.Group();\nscene.add( group );\n\nsetInterval(() => {\n \tif(Math.random() < fallingMonument.newItemProbability) {\n \t\taddItem(returnRandomItem(), 10);\n \t}\n}, fallingMonument.newItemTestDelay);\n\n// render/update function\nfunction update( event ) {\n\tvar time = event.time * 0.0002;\n\t\n//\tcamera.position.x = Math.sin( time ) * 8;\n//\tcamera.position.z = Math.cos( time ) * 8;\n//\tcamera.lookAt( scene.position );\n\n\tfor ( var i = 0; i < group.children.length; i ++ ) {\n\t\tvar clone = group.children[ i ];\n\t\tclone.position.y -= clone.userData.speed;\n\t\tclone.rotation.x += 0.01;\n\t\tclone.rotation.y += 0.02;\n\t\t\n\t\tif ( clone.position.y < -2 * fallingMonument.posRange ) {\n\t\t\tgroup.remove(clone)\n\t\t\tclone.remove();\n\t\t}\n\t}\n}\n\n// helper functions\nfunction initObject(name) {\n\tvar obj = scene.getObjectByName(name);\n\tobj.visible = false;\n\treturn obj\n}\n\nfunction returnRandomItem() { \n\tvar itemIndex = Math.floor(Math.random() * fallingMonument.activeItemKeys.length)\n\treturn items[fallingMonument.activeItemKeys[itemIndex]];\n}\n\nfunction addItem(source, y) {\n\tvar clone = source.clone();\n\tclone.position.x = Math.random() * (fallingMonument.posRange - (fallingMonument.posRange / 2));\n\tclone.position.y = y || Math.random() * fallingMonument.posRange * 2; //20 - 10;\n\tclone.position.z = Math.random() * (fallingMonument.posRange - (fallingMonument.posRange / 2));\n\tclone.rotation.x = Math.random() * Math.PI;\n\tclone.rotation.y = Math.random() * Math.PI;\n\tclone.rotation.z = Math.random() * Math.PI;\n//\tlet maxScale = clone.scale.x;\n//\tclone.scale.setScalar( maxScale * Math.random() * 0.5 + 0.15 );\n\tclone.userData.speed = Math.random() * fallingMonument.maxSpeed + (fallingMonument.maxSpeed / 3);\n\tclone.visible = true;\n\tgroup.add( clone );\n}\n\nwindow.fallingMonument = fallingMonument;\nwindow.tst = 'yo';\n// start with 5 random objects\n//for ( var i = 0; i < 5; i ++ ) { addItem(returnRandomItem(), 10); }\n\n"
+				"source": "// init objects\nvar items = {\n\t'bottle': initObject('Bottle'),\n\t'pen': initObject('Pen'),\n\t'credit-card': initObject('CreditCard'),\n\t'bucket': initObject('Bucket'),\t\n\t'lunch-box': initObject('LunchBox'),\t\n\t'fork-spoon': initObject('ForkSpoon'),\t\n}\nfunction initObject(name) {\n\tvar obj = scene.getObjectByName(name);\n\tobj.visible = false;\n\treturn obj\n}\n\n// init group\nvar group = new THREE.Group();\nscene.add( group );\n\n// render/update function\nfunction update( event ) {\n\tvar time = event.time * 0.0002;\n\t\n\tfor ( var i = 0; i < group.children.length; i ++ ) {\n\t\tvar clone = group.children[ i ];\n\t\tclone.position.y -= clone.userData.speed;\n\t\tclone.rotation.x += 0.01;\n\t\tclone.rotation.y += 0.02;\n\t\t\n\t\tif ( clone.position.y < clone.userData.destroyAtY ) {\n\t\t\tgroup.remove(clone)\n\t\t\tclone.remove();\n\t\t}\n\t}\n}\n\nvar fallingMonument = {}\nfallingMonument.addItem = function(key, options) { // options = {speed, scale, x, y, z}\n\tvar source = items[key]\n\tvar clone = source.clone();\n\tclone.position.x = options.x || 0;\n\tclone.position.y = options.y || 0;\n\tclone.position.z = options.z || 0;\n\tclone.rotation.x = Math.random() * Math.PI;\n\tclone.rotation.y = Math.random() * Math.PI;\n\tclone.rotation.z = Math.random() * Math.PI;\n//\tlet maxScale = clone.scale.x;\n//\tclone.scale.setScalar( maxScale * Math.random() * 0.5 + 0.15 );\n\tclone.scale.setScalar(options.scale || 1)\n\tclone.userData.speed = options.speed || 1;\n\tclone.userData.destroyAtY = -2 * (options.y || 1);\n\tclone.visible = true;\n\tgroup.add( clone );\n}\nwindow.fallingMonument = fallingMonument;"
 			}],
 		"BFCE780E-3434-4901-989A-8AF3D23B61CB": [
 			{
