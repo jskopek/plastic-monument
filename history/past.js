@@ -6,7 +6,7 @@ import _ from 'lodash';
 var scrollMonitor = require('scrollmonitor');
 // require('../css/main.scss')
 require('./past.scss')
-var appJSON = require('./app-performance.json')
+var appJSON = require('./app.json')
 
 
 window.THREE = THREE; // Used by APP Scripts.
