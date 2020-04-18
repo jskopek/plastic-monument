@@ -6,7 +6,7 @@ import _ from 'lodash';
 var scrollMonitor = require('scrollmonitor');
 // require('../css/main.scss')
 require('./past.scss')
-var appJSON = require('./past.json')
+var appJSON = require('./past-alt-camera.json')
 
 
 window.THREE = THREE; // Used by APP Scripts.
@@ -36,7 +36,7 @@ let scale = 0.5;
 setInterval(() => {
     if (Math.random() < newItemProbability) {
         let key = returnRandomKey()
-        let options = {speed: speed, scale: scale, x: randomCoord(50), y: 10, z: randomCoord(50)}
+        let options = {speed: speed, scale: scale, x: randomCoord(15), y: 15, z: randomCoord(15)}
         console.log(key, options);
         fallingMonument.addItem(key, options);
     }
